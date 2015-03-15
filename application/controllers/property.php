@@ -14,7 +14,7 @@ class property extends CI_Controller{
   }
 
   public function logincheck(){
-    $firstName= $this->input->post('firstname');
+    $firstName= $this->input->post('username');
 
     if($firstName=="Riaz"){
       echo "Hello";
