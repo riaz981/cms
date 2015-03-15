@@ -8,11 +8,11 @@ $this->load->view('header');
         <h3 align="center">Please Log-In</h3>
         <div class="form-group">
           <label for="firstname">Username: <span style="color:#F24B4B;">*</span></label>
-          <input type="text" class="form-control" id="firstname" placeholder="Enter Username" name="firstname"/>
+          <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username"/>
         </div>
         <div class="form-group">
           <label fpr="lastname">Password: <span style="color:#F24B4B;">*</span></label>
-          <input type="password" class="form-control" id="lastname" placeholder="Enter Password" name="lastname"/>
+          <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password"/>
         </div>
         <div align="center">
           <button type="submit" name="submit" class="btn btn-success" value="Submit">Log In</button>
