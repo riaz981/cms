@@ -9,11 +9,13 @@ class property extends CI_Controller{
 
   }
 
+  //Log-in Page
   public function index(){
     $this->load->helper(array('form'));
     $this->load->view('login');
   }
 
+  //Checking the credentials of initial log in page
   public function logincheck(){
     $username= $this->input->post('username');
     $password= $this->input->post('password');
