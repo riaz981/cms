@@ -6,17 +6,19 @@ $this->load->view('header');
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <?php if(isset($message)) echo $message; ?>
       <?php echo form_open('property/logincheck'); ?>
-        <h3 align="center">Add Property</h3>
+        <h2 align="center">Add Property</h2>
         <div class="form-body">
 
             <div class="form-group">
-                <label for="name">Property Name:</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter property name" required>
-            </div>
+            <fieldset>
+                <legend style="color: #1489a6;">Name &amp Address:</legend>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <label for="name">Property Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter property name" required>
 
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
+                    <label for="address">Address:</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
+                </div>
             </div>
 
 
