@@ -25,3 +25,8 @@ body{
     -o-box-shadow: 10px -10px 5px rgba(0,0,0,0.6);
     border-radius:25px;
 }
+
+.footerForm{
+    margin-top:0.4em;
+    margin-bottom:0.4em;
+}
