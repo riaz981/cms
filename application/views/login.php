@@ -19,6 +19,8 @@ $this->load->view('header');
           <button type="reset" class="btn btn-warning">Reset</button>
         </div>
       </form>
+      <div style="margin-top:0.5em;"><span style="color:#F24B4B;"><?php if(isset($message))
+                                                                        echo $message; ?></span></div>
   </div>
 </div>
 <?php
