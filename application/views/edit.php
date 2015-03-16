@@ -16,7 +16,7 @@ $this->load->view('header');
                     <label for="name">Property Name:</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter property name" required>
 
-                    <label for="address">Address:</label>
+                    <label for="address" style="margin-top:0.4em;">Address:</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
                 </div>
             </div>
