@@ -11,13 +11,16 @@ $this->load->view('header');
 
             <div class="form-group">
             <fieldset>
-                <legend style="color: #1489a6;">Name &amp Address:</legend>
+                <legend style="color: #1489a6;">Name, Address &amp Url:</legend>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label for="name">Property Name:</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter property name" required>
 
                     <label for="address" style="margin-top:0.4em;">Address:</label>
                     <input type="text" class="form-control" id="address" name="address" placeholder="Enter address" required>
+
+                    <label for="url" style="margin-top:0.4em">Url:</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Enter Url http://example.com" required>
                 </div>
             </div>
 
