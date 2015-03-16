@@ -27,7 +27,7 @@ $this->load->view('header');
                     <legend style="color: #1489a6;">Icon informations:</legend>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <label for="typeProperty">Type:</label>
-                        <input type="text" class="form-control" id="typeProperty" name="typeProperty" placeholder="Whole house/Just rooms" float:"left" required>
+                        <input type="text" class="form-control" id="typeProperty" name="typeProperty" placeholder="Whole house/Just rooms" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <label for="guestNumber">Number of Guests:</label>
