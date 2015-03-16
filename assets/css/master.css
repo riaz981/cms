@@ -9,7 +9,7 @@ body{
 }
 .roundedCorner {
     width:350px;
-    height:200px;
+    height:auto;
     border: solid 1px #555;
     background-color: #eed;
     box-shadow: 10px -10px 5px rgba(0,0,0,0.6);
