@@ -30,8 +30,8 @@ $this->load->view('header');
                         <input type="text" class="form-control" id="typeProperty" name="typeProperty" placeholder="Whole house/Just rooms" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <label for="guestNumber">Number of Guests:</label>
-                            <input type="number" class="form-control" id="guestNumber" name="guestNumber" required>
+                        <label for="guestNumber">Number of Guests:</label>
+                        <input type="number" class="form-control" id="guestNumber" name="guestNumber" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
                         <label for="bedroomNumber">Number of Bedrooms:</label>
