@@ -35,9 +35,9 @@ class property extends CI_Controller{
 
         //if username and password is correct
         if($check==true){
-            $data['message']="Welcome Admin! You can now add a property!";
+            //$data['message']="Welcome Admin! You can now add a property!";
             $this->load->helper(array('form'));
-            $this->load->view('edit',$data);
+            $this->load->view('edit');
         }
 
         //if username and password incorrect
