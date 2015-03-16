@@ -56,13 +56,35 @@ $this->load->view('header');
             <legend style="color: #1489a6;">Specifications:</legend>
                 <div class="form-group">
                     <label for="dining">Dining:</label>
-                    <textarea class="form-control" id="dining" class="dining" placeholder="Dining" rows="3"></textarea>
+                    <textarea class="form-control" id="dining" name="dining" placeholder="Dining" rows="3"></textarea>
                 </div>
 
-                <div class="form-group" style="margin-top:2em;">
+                <div class="form-group">
                     <label for="bathroomDescription">Bathroom Description:</label>
-                    <textarea class="form-control" id="bathroomDescription" class="bathroomDescription" placeholder="Bathroom Description" rows="3"></textarea>
+                    <textarea class="form-control" id="bathroomDescription" name="bathroomDescription" placeholder="Bathroom Description" rows="3"></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="bedroomDescription">Bedroom Description:</label>
+                    <textarea class="form-control" id="bedroomDescription" name="bedroomDescription" placeholder="Bedroom Description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="attractionDescription">Attractions Description:</label>
+                    <textarea class="form-control" id="attractionDescription" name="attractionDescription" placeholder="Attractions Description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="leisureDescription">Leisure Activity Description:</label>
+                    <textarea class="form-control" id="leisureDescription" name="leisureDescription" placeholder="Leisure Activity Description" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="businessDescription">Local Services and Businesses Description:</label>
+                    <textarea class="form-control" id="businessDescription" name="businessDescription" placeholder="Local Service and Businesses Description" rows="3"></textarea>
+                </div>
+
+                
             </fieldset>
         </div>
         <div class="footerForm">
