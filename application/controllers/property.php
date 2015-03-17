@@ -51,4 +51,35 @@ class property extends CI_Controller{
     }
   }
 
+  public function addProperty(){
+
+      $data['name'] = $this->input->post('name');
+      $data['address'] = $this->input->post('address');
+      $data['url'] = $this->input->post('url');
+
+      $icon['typeProperty'] = $this->input->post('typeProperty');
+      $icon['guestNumber'] = $this->input->post('guestNumber');
+      $icon['bedroomNumber'] = $this->input->post('bedroomNumber');
+      $icon['bedsNumber'] = $this->input->post('bedsNumber');
+
+      $data['icon'] = json_encode($icon);
+
+      $data['minimumStay'] = $this->input->post('minimumStay');
+
+      $rates['nightlyRate'] = $this->input->post('nightlyRate');
+      $rates['weeklyRate'] = $this->input->post('weeklyRate');
+      $rates['monthlyRate'] = $this->input->post('monthlyRate');
+      $rates['cleaningRate'] = $this->input->post('cleaningRate');
+
+      $data['rates'] = json_encode($rates);
+
+      $data['overview'] = $this->input->post('overview');
+
+      $data['dining'] = $this->input->post('dining');
+      $data['bathroomDescription'] = $this->input->post('bathroomDescription');
+      $data['bedroomDescription'] = $this->input->post('bedroomDescription');
+      
+
+  }
+
 }
