@@ -21,5 +21,17 @@ Class Propertymodel extends CI_Model{
 
     }
 
+    function insertData($data){
+        $this->db->insert('wp_property',$data);
+        if($this->db->affected_rows()>0){
+            echo "Success your data has been entered!";
+        }
+
+        else{
+            echo "There is something wrong. Could not enter data...";
+        }
+
+    }
+
 
 }
