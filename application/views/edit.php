@@ -130,8 +130,8 @@ $this->load->view('header');
         </div>
         <div class="footerForm">
             <div align="center">
-              <button type="submit" name="submit" id="submit" class="btn btn-primary">Add</button>
-              <button type="reset" class="btn btn-warning">Reset</button>
+              <button type="submit" name="submit" id="submit" class="btn btn-success">Add</button>
+              <button type="reset" class="btn btn-primary">Reset</button>
             </div>
         </div>
       </form>

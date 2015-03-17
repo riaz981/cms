@@ -67,15 +67,6 @@ class property extends CI_Controller{
       $this->form_validation->set_rules('guestNumber', 'Number of Guests','required');
       $this->form_validation->set_rules('bedroomNumber', 'Number of Bedrooms','required');
       $this->form_validation->set_rules('bedsNumber','Number of Beds','required');
-
-      $this->form_validation->set_rules('minimumStay','Minimum Stay','required');
-      $this->form_validation->set_rules('nightlyRate','Nightly Rate','required');
-      $this->form_validation->set_rules('weeklyRate','Weekly Rate','required');
-      $this->form_validation->set_rules('monthlyRate','Monthly Rate','required');
-      $this->form_validation->set_rules('cleaningRate','Cleaning Rate','required');
-      $this->form_validation->set_rules('bathroomDescription','Bathroom Description','required');
-
-      /*
       $this->form_validation->set_rules('minimumStay','Minimum Stay','required');
       $this->form_validation->set_rules('nightlyRate','Nightly Rate','required');
       $this->form_validation->set_rules('weeklyRate','Weekly Rate','required');
@@ -87,7 +78,7 @@ class property extends CI_Controller{
       $this->form_validation->set_rules('leisureDescription','Leisure Description','required');
       $this->form_validation->set_rules('businessDescription','Business Description', 'required');
       $this->form_validation->set_rules('sportsDescription','Sports Description','required');
-      */
+
 
       //if there is any validation failure redirect
       //back to the form.
