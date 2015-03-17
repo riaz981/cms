@@ -118,7 +118,7 @@ class property extends CI_Controller{
             $data['businessDescription'] = $this->input->post('businessDescription');
             $data['sportsDescription'] = $this->input->post('sportsDescription');
 
-            var_dump($data);
+            $this->propertymodel->insertData($data);
         }
 
   }
