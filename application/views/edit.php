@@ -53,7 +53,7 @@ $this->load->view('header');
 
             <div class="form-group">
                 <fieldset>
-                <legend style="color: #1489a6;">Rate:</legend>
+                <legend style="color: #1489a6;">Rates:</legend>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <label for="nightlyRate">Nightly Price: A$</label>
                         <input type="text" class="form-control" id="nightlyRate" name="nightlyRate" placeholder="Nightly Price" required>
