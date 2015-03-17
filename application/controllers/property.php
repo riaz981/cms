@@ -58,6 +58,8 @@ class property extends CI_Controller{
       $this->load->helper(array('form'));
       $this->load->library('form_validation');
 
+
+      //setting the rules for form validation.
       $this->form_validation->set_rules('name','Name','required');
       $this->form_validation->set_rules('address','Address','required');
       $this->form_validation->set_rules('url', 'Url', 'required');
@@ -77,10 +79,13 @@ class property extends CI_Controller{
       $this->form_validation->set_rules('businessDescription','Business Description', 'required');
       $this->form_validation->set_rules('sportsDescription','Sports Description','required');
 
+      //if there is any validation failure redirect
+      //back to the form.
       if($this->form_validation->run()==FALSE){
           $this->load->view('edit');
       }
 
+      //else call the model function to insert data
       else{
             $data['name'] = $this->input->post('name');
             $data['address'] = $this->input->post('address');
