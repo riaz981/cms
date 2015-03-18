@@ -35,19 +35,19 @@ $this->load->view('header');
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <label for="guestNumber">Number of Guests: <span style="color:#F24B4B;">*</span></label>
-                        <input type="number" class="form-control" id="guestNumber" name="guestNumber" value="<?php echo set_value('guestNumber')?>" required>
+                        <input type="number" class="form-control" id="guestNumber" name="guestNumber" placeholder="Number of Guests" value="<?php echo set_value('guestNumber')?>" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
                         <label for="bedroomNumber">Number of Bedrooms: <span style="color:#F24B4B;">*</span></label>
-                        <input type="number" class="form-control" id="bedroomNumber" name="bedroomNumber" value="<?php echo set_value('bedroomNumber')?>" required>
+                        <input type="number" class="form-control" id="bedroomNumber" name="bedroomNumber" placeholder="Number of Bedrooms" value="<?php echo set_value('bedroomNumber')?>" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
                         <label for="bedsNumber">Number of Beds: <span style="color:#F24B4B;">*</span></label>
-                        <input type="number" class="form-control" id="bedsNumber" name="bedsNumber" value="<?php echo set_value('bedsNumber')?>" required>
+                        <input type="number" class="form-control" id="bedsNumber" name="bedsNumber" placeholder="Number of Beds" value="<?php echo set_value('bedsNumber')?>" required>
                     </div>
                     <div class="col-lg-12 col-lg-12 col-lg-12 col-xs-12" style="margin-top:0.4em;">
                         <label for="minimumStay">Minimum Stay: (Nights) <span style="color:#F24B4B;">*</span></label>
-                        <input type="number" class="form-control" id="minimumStay" name="minimumStay" value="<?php echo set_value('minimumStay')?>" required>
+                        <input type="number" class="form-control" id="minimumStay" name="minimumStay" placeholder="Minimum Stay" value="<?php echo set_value('minimumStay')?>" required>
                     </div>
                 </fieldset>
             </div>
