@@ -24,7 +24,7 @@ $this->load->view('header');
                     <input type="text" class="form-control" id="url" name="url" value="<?php echo set_value('url')?>" placeholder="Enter Url: http://example.com" required>
                 </div>
             </div>
-
+<!-- -->
 
             <div class="form-group">
                 <fieldset>
