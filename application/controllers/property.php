@@ -37,7 +37,7 @@ class property extends CI_Controller{
         if($check==true){
             //$data['message']="Welcome Admin! You can now add a property!";
             $this->load->helper(array('form'));
-            $this->load->view('edit');
+            $this->load->view('add');
         }
 
         //if username and password incorrect
@@ -57,7 +57,6 @@ class property extends CI_Controller{
   public function addProperty(){
       $this->load->helper(array('form'));
       $this->load->library('form_validation');
-
 
       //setting the rules for form validation.
       $this->form_validation->set_rules('name','Name','required');
@@ -83,7 +82,7 @@ class property extends CI_Controller{
       //if there is any validation failure redirect
       //back to the form.
       if($this->form_validation->run()==FALSE){
-          $this->load->view('edit');
+          $this->load->view('add');
       }
 
       //else call the model function to insert data
