@@ -32,8 +32,7 @@ Class Propertymodel extends CI_Model{
         Takes $data as an array and inserts it
         using the built in codeigniter function insert()
         affected_rows shows the number of rows that were
-        affected. This is where the data will be inserted
-        using the insertData function. 
+        affected.
     */
     function insertData($data){
         $this->db->insert('wp_property',$data);
