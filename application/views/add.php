@@ -24,7 +24,7 @@ $this->load->view('header');
                     <input type="text" class="form-control" id="url" name="url" value="<?php echo set_value('url')?>" placeholder="Enter Url: http://example.com" required>
                 </div>
             </div>
-<!-- -->
+
 
             <div class="form-group">
                 <fieldset>
@@ -46,7 +46,7 @@ $this->load->view('header');
                         <input type="number" class="form-control" id="bedsNumber" name="bedsNumber" value="<?php echo set_value('bedsNumber')?>" required>
                     </div>
                     <div class="col-lg-12 col-lg-12 col-lg-12 col-xs-12" style="margin-top:0.4em;">
-                        <label for="minumumStay">Minimum Stay: (Nights) <span style="color:#F24B4B;">*</span></label>
+                        <label for="minimumStay">Minimum Stay: (Nights) <span style="color:#F24B4B;">*</span></label>
                         <input type="number" class="form-control" id="minimumStay" name="minimumStay" value="<?php echo set_value('minimumStay')?>" required>
                     </div>
                 </fieldset>
@@ -60,7 +60,7 @@ $this->load->view('header');
                         <input type="text" class="form-control" id="nightlyRate" name="nightlyRate" value="<?php echo set_value('nightlyRate')?>" placeholder="Nightly Price" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="weeklyRate">Weekly Rate: A$ <span style="color:#F24B4B;">*</span></label>
+                        <label for="weeklyRate">Weekly Price: A$ <span style="color:#F24B4B;">*</span></label>
                         <input type="text" class="form-control" id="weeklyRate" name="weeklyRate" value="<?php echo set_value('weeklyRate')?>" placeholder="Weekly Price" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
