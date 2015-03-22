@@ -1,3 +1,15 @@
+/* navbar */
+
+.navbar-default{
+    background-color: #7F7D7D;
+    border-color: #E7E7E7;
+}
+
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
 body{
   background-color: #E4E0E0;
 }
