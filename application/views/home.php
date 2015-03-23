@@ -26,7 +26,9 @@ $this->load->view('navheader');
     <div class="row formationaddtable" style="min-height:42em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h2 align="center">List of Properties</h2>
+            <div class="table-responsive">
             <table class="table table-bordered" style="margin-top:2em;">
+
                 <thead>
                     <tr style="background-color: #7F7D7D;">
                         <th style="color: #F9F2F2;">Property ID</th>
@@ -48,6 +50,7 @@ $this->load->view('navheader');
 
                 </tbody>
             </table>
+            </div>
         </div>
     </div>
 </div>
