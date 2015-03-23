@@ -21,7 +21,14 @@ $this->load->view('navheader');
 </div> <!-- navbar collapse -->
 </div>
 </nav> <!-- main navbar closes -->
-
+<div class="container" style="padding-top: 60px;">
+    <div class="row formationadd" style="min-height:42em;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        </div>
+    </div>
+</div>
+<div>
 <?php
 $this->load->view('footer');
 ?>
+</div>
