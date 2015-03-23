@@ -37,7 +37,7 @@ class property extends CI_Controller{
         if($check==true){
             //$data['message']="Welcome Admin! You can now add a property!";
             $this->load->helper(array('form'));
-            $this->load->view('add');
+            $this->home();
         }
 
         //if username and password incorrect
@@ -66,6 +66,7 @@ class property extends CI_Controller{
           $data['property'][$i]['id'] = $row->id;
           $data['property'][$i]['name'] = $row->name;
           $data['property'][$i]['address'] = $row->address;
+          $data['property'][$i]['url'] = $row->url;
           $i++;
       }
 
