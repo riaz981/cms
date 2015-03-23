@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="home">
                     <img alt="Brand" src="<?php echo base_url("assets/img/as.png"); ?>">
                 </a>
             </div>
