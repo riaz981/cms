@@ -51,6 +51,18 @@ class property extends CI_Controller{
     }
   }
 
+  //this is for the navigation link that goes to add page
+  public function add(){
+      $this->load->helper(array('form'));
+      $this->load->view('add');
+  }
+
+  //link for home page
+  public function home(){
+      $this->load->helper(array('form'));
+      $this->load->view('home');
+  }
+
   //Adds a property. If successful calls the property model
   //property model then inserts the data in mySql.
   //passes $data to the model's function.
