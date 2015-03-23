@@ -27,8 +27,6 @@ $this->load->view('navheader');
         </div>
     </div>
 </div>
-<div>
 <?php
 $this->load->view('footer');
 ?>
-</div>
