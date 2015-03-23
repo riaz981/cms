@@ -3,10 +3,10 @@ $this->load->view('navheader');
 ?>
 
 <!-- collapse the nav links, forms, and other content for toggling -->
-<div class="collapse navbar-collapse" id="bs-exaple-navbar-collapse-1">
+<div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
-        <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
-        <li class="active"><a href="#">Add Property</a></li>
+        <li><a href="home">Home<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="add">Add Property</a></li>
     </ul>
 
     <form class="navbar-form navbar-left" role="search">
