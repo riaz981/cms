@@ -59,8 +59,18 @@ class property extends CI_Controller{
 
   //link for home page
   public function home(){
-      $this->load->helper(array('form'));
-      $this->load->view('home');
+
+      $query= $this->propertymodel->getAll();
+      $i=0;
+      foreach ($query as $row){
+          $data['property'][$i]['id'] = $row->id;
+          $data['property'][$i]['name'] = $row->name;
+          $data['property'][$i]['address'] = $row->address;
+          $i++;
+      }
+
+     $this->load->helper(array('form'));
+     $this->load->view('home',$data);
   }
 
   //Adds a property. If successful calls the property model
