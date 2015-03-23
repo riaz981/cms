@@ -46,6 +46,10 @@ Class Propertymodel extends CI_Model{
 
     }
 
+    /*
+        Gets all the information from the database and
+        throws information back to home function.
+    */
     function getAll(){
         $this->db->select('id,name,address,url');
         $query = $this->db->get('wp_property');
