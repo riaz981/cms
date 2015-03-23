@@ -47,7 +47,7 @@ Class Propertymodel extends CI_Model{
     }
 
     function getAll(){
-        $this->db->select('id,name,address');
+        $this->db->select('id,name,address,url');
         $query = $this->db->get('wp_property');
         if($query->num_rows()>=1){
             return $query->result();
