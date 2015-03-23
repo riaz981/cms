@@ -24,6 +24,12 @@ $this->load->view('navheader');
 <div class="container" style="padding-top: 60px;">
     <div class="row formationadd" style="min-height:42em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <?php
+                //var_dump($property);
+                foreach($property as $row){
+                    echo $row['id']."."."Name: ".$row['name']."<br>";
+                }
+            ?>
         </div>
     </div>
 </div>
