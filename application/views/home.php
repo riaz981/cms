@@ -21,18 +21,38 @@ $this->load->view('navheader');
 </div> <!-- navbar collapse -->
 </div>
 </nav> <!-- main navbar closes -->
+
 <div class="container" style="padding-top: 60px;">
-    <div class="row formationadd" style="min-height:42em;">
+    <div class="row formationaddtable" style="min-height:42em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <?php
-                //var_dump($property);
-                foreach($property as $row){
-                    echo $row['id']."."."Name: ".$row['name']."<br>";
+            <h2 align="center">List of Properties</h2>
+            <table class="table table-bordered" style="margin-top:2em;">
+                <thead>
+                    <tr style="background-color: #7F7D7D;">
+                        <th style="color: #F9F2F2;">Property ID</th>
+                        <th style="color: #F9F2F2;">Property Name</th>
+                        <th style="color: #F9F2F2;">Property Address</th>
+                        <th style="color: #F9F2F2;">Property Url</th>
+                        <th style="color: #F9F2F2;">Admin Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <?php
+                    //var_dump($property);
+                    foreach($property as $row){ ?>
+                        <tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td><td></td></tr>
+                    <?php
                 }
-            ?>
+                ?>
+
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
+</div>
+
 <?php
 $this->load->view('footer');
 ?>
