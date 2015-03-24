@@ -30,12 +30,31 @@ $this->load->view('navheader');
     <div class="row formationaddtable" style="min-height:42em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h2 align="center">List of Properties</h2>
-            <?php if(isset($message)){?>
+            <?php if(isset($message))
+            {
+                if($message=="success")
+                { ?>
+                    <div class="alert alert-success" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <span style="color:#1B2E1E;"><?php echo "Property has now been entered!";?></span>
+                    </div>
+                <?php } ?>
+                <?php
+                if($message=="fail")
+                { ?>
+                    <div class="alert alert-info" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <span style="color:#F24B4B;"><?php echo "Unable to enter data!";?></span>
+                    </div>
+                <?php }
+                if($message=="nope")
+                { ?>
                 <div class="alert alert-danger" role="alert">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <strong>Error!</strong> <span style="color:#F24B4B;"><?php echo $message;?></span><a href="home" style="margin-left:1em;" class="btn btn-info">Back</a>
+                  <strong>Error!</strong> <span style="color:#F24B4B;"><?php echo "No property by that name was found";?></span><a href="home" style="margin-left:1em;" class="btn btn-info">Back</a>
                 </div>
-            <?php } ?>
+                <?php }
+                } ?>
             <div class="table-responsive">
             <table class="table table-bordered" id="table" style="margin-top:2em;">
 
