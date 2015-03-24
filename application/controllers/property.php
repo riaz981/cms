@@ -65,6 +65,11 @@ class property extends CI_Controller{
      $this->load->view('home',$data);
   }
 
+  /*
+    calls the propertymodel function getAll to
+    fetch all the data of the table. Returs
+    that data to whichever function had called it.
+  */
   public function getEverything(){
       $query= $this->propertymodel->getAll();
       $i=0;
@@ -147,7 +152,7 @@ class property extends CI_Controller{
 
             $check = $this->propertymodel->insertData($data);
             if($check){
-                
+
                 $data = $this->getEverything();
                 $data['message']="success";
 
