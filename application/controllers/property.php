@@ -60,6 +60,12 @@ class property extends CI_Controller{
   //link for home page
   public function home(){
 
+     $data=$this->getEverything();
+     $this->load->helper(array('form'));
+     $this->load->view('home',$data);
+  }
+
+  public function getEverything(){
       $query= $this->propertymodel->getAll();
       $i=0;
       foreach ($query as $row){
@@ -70,8 +76,7 @@ class property extends CI_Controller{
           $i++;
       }
 
-     $this->load->helper(array('form'));
-     $this->load->view('home',$data);
+      return $data;
   }
 
   //Adds a property. If successful calls the property model
@@ -140,7 +145,19 @@ class property extends CI_Controller{
             $data['businessDescription'] = $this->input->post('businessDescription');
             $data['sportsDescription'] = $this->input->post('sportsDescription');
 
-            $this->propertymodel->insertData($data);
+            $check = $this->propertymodel->insertData($data);
+            if($check){
+                
+                $data = $this->getEverything();
+                $data['message']="success";
+
+                $this->load->helper(array('form'));
+                $this->load->view('home',$data);
+            }
+            else
+                $data['message']="fail";
+                $this->load->helper(array('form'));
+                $this->load->view('home',$data);
         }
 
   }
@@ -167,7 +184,7 @@ class property extends CI_Controller{
         $this->load->view('home',$data);
      else
      {
-        $error['message']="Could not find the record";
+        $error['message']="nope";
         $this->load->view('home',$error);
      }
 
