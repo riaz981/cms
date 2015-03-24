@@ -60,5 +60,16 @@ Class Propertymodel extends CI_Model{
          echo "Could not fetch records";
     }
 
+    function getSpecific($name){
+        $this->db->like('name',$name,'both');
+        $this->db->select('id,name,address,url');
+        $query=$this->db->get('wp_property');
+
+        if($query->num_rows()>=1)
+            return $query->result();
+        else
+            echo "Could not fetch records";
+    }
+
 
 }
