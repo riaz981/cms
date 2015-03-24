@@ -60,6 +60,13 @@ Class Propertymodel extends CI_Model{
          echo "Could not fetch records";
     }
 
+    /*
+        Gets information about specific data from
+        the table. Depending on the name provided.
+        Uses like function for search for any
+        string on both sides resembling the search
+        result.
+    */
     function getSpecific($name){
         $this->db->like('name',$name,'both');
         $this->db->select('id,name,address,url');
