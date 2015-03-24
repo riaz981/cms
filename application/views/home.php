@@ -9,12 +9,16 @@ $this->load->view('navheader');
         <li><a href="add">Add Property</a></li>
     </ul>
 
-    <form class="navbar-form navbar-left" role="search">
+    <?php
+        $attributes = array('class'=>'navbar-form navbar-left','role'=>'search');
+    ?>
+    <?php echo form_open('property/search',$attributes); ?>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" name="search" placeholder="Search by name">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
+
     <ul class="nav navbar-nav navbar-right">
         <li><a href="http://cms.localhost">Logout</a></li>
     </ul>
@@ -26,8 +30,9 @@ $this->load->view('navheader');
     <div class="row formationaddtable" style="min-height:42em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h2 align="center">List of Properties</h2>
+            <?php if(isset($message)){?><span style="color:#F24B4B;"><?php echo $message;?></span><?php } ?>
             <div class="table-responsive">
-            <table class="table table-bordered" style="margin-top:2em;">
+            <table class="table table-bordered" id="table" style="margin-top:2em;">
 
                 <thead>
                     <tr style="background-color: #7F7D7D;">
@@ -39,22 +44,35 @@ $this->load->view('navheader');
                     </tr>
                 </thead>
                 <tbody>
-
-                <?php
-                    //var_dump($property);
-                    foreach($property as $row){ ?>
-                        <tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td><td></td></tr>
                     <?php
-                }
-                ?>
-
-                </tbody>
+                    if(isset($property)){
+                        foreach($property as $row){ ?>
+<tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td><td></td></tr>
+                            <?php
+                        }
+                    }
+            ?>
+            </tbody>
             </table>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+<script>
+        // Write on keyup event of keyword input element
+    $("#search").keyup(function(){
+        _this = this;
+        // Show only matching TR, hide rest of them
+        $.each($("#table tbody").find("tr"), function() {
+            console.log($(this).text());
+            if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) == -1)
+               $(this).hide();
+            else
+                 $(this).show();
+        });
+    });
+</script>
 
 <?php
 $this->load->view('footer');
