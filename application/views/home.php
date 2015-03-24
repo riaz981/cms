@@ -73,41 +73,50 @@ $this->load->view('navheader');
                         foreach($property as $row){ ?>
 <tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td>
     <td>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <form>
-            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit</button>
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit/View</button>
         </form>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
-        <button type="button" class="btn btn-danger" data-toggle="modal" style="float:left;" data-target="#myModal">Delete</button>
+        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6">
+
+        <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#myModal<?php echo $row['id'] ?>">Delete</button>
         </div>
-        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+
+        <?php } ?>
+        <?php foreach($property as $row){ ?>
+        <div class="modal fade" id="myModal<?php echo $row['id'] ?>" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color: #7F7D7D;">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" align="center" id="gridSystemModalLabel">Delete Property</h4>
+              <h4 class="modal-title" align="center" style="color: #F9F2F2;" id="gridSystemModalLabel">Delete Property</h4>
             </div>
             <div class="modal-body">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">Do you really want to delete this property?</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">Do you really want to delete property <span style="color:#B84A4A;"><?php echo $row['name']; ?></span>?</div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
                 <div align="center">
-                  <button type="button" class="btn btn-default">Yes</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+
+                    <?php echo form_open('property/deleteProperty'); ?>
+                    <input type="hidden" name="id" value="<?php echo $row['id'];?>">
+                    <button type="submit" class="btn btn-default">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </form>
                 </div>
             </div>
           </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+    <?php } ?>
     </td>
 </tr>
                             <?php
-                        }
+
                     }
             ?>
             </tbody>
