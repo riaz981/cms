@@ -30,7 +30,12 @@ $this->load->view('navheader');
     <div class="row formationaddtable" style="min-height:42em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h2 align="center">List of Properties</h2>
-            <?php if(isset($message)){?><span style="color:#F24B4B;"><?php echo $message;?></span><?php } ?>
+            <?php if(isset($message)){?>
+                <div class="alert alert-danger" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Error!</strong> <span style="color:#F24B4B;"><?php echo $message;?></span><a href="home" style="margin-left:1em;" class="btn btn-info">Back</a>
+                </div>
+            <?php } ?>
             <div class="table-responsive">
             <table class="table table-bordered" id="table" style="margin-top:2em;">
 
@@ -58,21 +63,6 @@ $this->load->view('navheader');
         </div>
     </div>
 </div>
-
-<script>
-        // Write on keyup event of keyword input element
-    $("#search").keyup(function(){
-        _this = this;
-        // Show only matching TR, hide rest of them
-        $.each($("#table tbody").find("tr"), function() {
-            console.log($(this).text());
-            if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) == -1)
-               $(this).hide();
-            else
-                 $(this).show();
-        });
-    });
-</script>
 
 <?php
 $this->load->view('footer');
