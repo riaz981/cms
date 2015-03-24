@@ -145,4 +145,32 @@ class property extends CI_Controller{
 
   }
 
+  public function search(){
+
+      $this->load->helper(array('form'));
+      $name = $this->input->post('search');
+      $name = strtolower($name);
+      $query=$this->propertymodel->getSpecific($name);
+      $i=0;
+      if(isset($query)){
+          foreach ($query as $row){
+              $data['property'][$i]['id'] = $row->id;
+              $data['property'][$i]['name'] = $row->name;
+              $data['property'][$i]['address'] = $row->address;
+              $data['property'][$i]['url'] = $row->url;
+              $i++;
+          }
+      }
+
+     $this->load->helper(array('form'));
+     if(isset($data))
+        $this->load->view('home',$data);
+     else
+     {
+        $error['message']="Could not find the record";
+        $this->load->view('home',$error);
+     }
+
+  }
+
 }
