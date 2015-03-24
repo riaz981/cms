@@ -14,7 +14,7 @@ $this->load->view('navheader');
     ?>
     <?php echo form_open('property/search',$attributes); ?>
         <div class="form-group">
-            <input type="text" class="form-control" name="search" placeholder="Search by name">
+            <input type="text" class="form-control" name="search" placeholder="Search by name" required>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
@@ -72,13 +72,13 @@ $this->load->view('navheader');
             <div class="modal-body">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">Do you really want to delete the property?</div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">Do you really want to delete this property?</div>
                 </div>
               </div>
             </div>
             <div class="modal-footer">
                 <div align="center">
-                  <button type="button" class="btn btn-primary">Yes</button>
+                  <button type="button" class="btn btn-default">Yes</button>
                   <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                 </div>
             </div>
