@@ -84,6 +84,11 @@ class property extends CI_Controller{
       return $data;
   }
 
+  public function deleteProperty(){
+      $id = $this->input->post('id');
+      echo $id;
+  }
+
   //Adds a property. If successful calls the property model
   //property model then inserts the data in mySql.
   //passes $data to the model's function.
