@@ -52,7 +52,41 @@ $this->load->view('navheader');
                     <?php
                     if(isset($property)){
                         foreach($property as $row){ ?>
-<tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td><td></td></tr>
+<tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td>
+    <td>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <form>
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit</button>
+        </form>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+        <button type="button" class="btn btn-danger" data-toggle="modal" style="float:left;" data-target="#myModal">Delete</button>
+        </div>
+        <div class="modal fade" id="myModal" role="dialog" aria-labelledby="gridSystemModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" align="center" id="gridSystemModalLabel">Delete Property</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" align="center">Do you really want to delete the property?</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <div align="center">
+                  <button type="button" class="btn btn-primary">Yes</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    </td>
+</tr>
                             <?php
                         }
                     }
