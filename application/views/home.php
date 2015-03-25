@@ -20,7 +20,7 @@ $this->load->view('navheader');
     </form>
 
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="http://cms.localhost">Logout</a></li>
+        <li><a href="logout">Logout</a></li>
     </ul>
 </div> <!-- navbar collapse -->
 </div>
