@@ -106,7 +106,21 @@ class property extends CI_Controller{
 
   public function deleteProperty(){
       $id = $this->input->post('id');
-      echo $id;
+      $check = $this->propertymodel->deleteRecord($id);
+      if($check){
+
+          $data=$this->getEverything();
+          $data['message']="deleted";
+          $this->load->helper(array('form'));
+          $this->load->view('home',$data);
+      }
+
+      else{
+          $data=$this->getEverything();
+          $data['message']="undeleted";
+          $this->load->helper(array('form'));
+          $this->load->view('home',$data);
+      }
   }
 
   //Adds a property. If successful calls the property model
