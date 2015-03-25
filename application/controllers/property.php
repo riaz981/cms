@@ -34,7 +34,8 @@ class property extends CI_Controller{
         $check=$this->propertymodel->logincheck($username,$password);
 
         //if username and password is correct
-        if($check==true){
+        if($check){
+
             //$data['message']="Welcome Admin! You can now add a property!";
             $this->load->helper(array('form'));
             $this->home();
@@ -53,16 +54,38 @@ class property extends CI_Controller{
 
   //this is for the navigation link that goes to add page
   public function add(){
-      $this->load->helper(array('form'));
-      $this->load->view('add');
+
+      if($this->session->userdata('validated')){
+          $this->load->helper(array('form'));
+          $this->load->view('add');
+      }
+
+      else{
+          $data['message']="Invalid username or password. Please try again!";
+          $this->load->helper(array('form'));
+          $this->load->view('login',$data);
+      }
   }
 
   //link for home page
   public function home(){
 
-     $data=$this->getEverything();
-     $this->load->helper(array('form'));
-     $this->load->view('home',$data);
+      if($this->session->userdata('validated')){
+
+         $data=$this->getEverything();
+         $this->load->helper(array('form'));
+         $this->load->view('home',$data);
+     }
+
+     else{
+
+         $data['message']="Invalid username or password. Please try again!";
+         $this->load->helper(array('form'));
+         $this->load->view('login',$data);
+
+
+
+     }
   }
 
   /*
@@ -198,6 +221,14 @@ class property extends CI_Controller{
         $this->load->view('home',$error);
      }
 
+  }
+
+  public function logout(){
+
+      $this->session->sess_destroy();
+      $data['message']="You have been logged out! Please log in.";
+      $this->load->helper(array('form'));
+      $this->load->view('login',$data);
   }
 
 }
