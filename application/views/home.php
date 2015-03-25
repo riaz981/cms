@@ -84,7 +84,7 @@ header("Pragma: no-cache");
             <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit/View</button>
         </form>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-6 col-xs-6">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-sm-push-1 col-xs-5 col-xs-push-2">
 
         <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#myModal<?php echo $row['id'] ?>">Delete</button>
         </div>
