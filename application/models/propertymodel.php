@@ -19,6 +19,13 @@ Class Propertymodel extends CI_Model{
         $query = $this->db->get();
 
         if($query->num_rows()==1){
+
+            $row = $query->row();
+            $data = array(
+                    'username' => $row->username,
+                    'validated' => true
+                    );
+            $this->session->set_userdata($data);
             return true;
         }
 
