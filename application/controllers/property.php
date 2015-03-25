@@ -82,9 +82,6 @@ class property extends CI_Controller{
          $data['message']="Invalid username or password. Please try again!";
          $this->load->helper(array('form'));
          $this->load->view('login',$data);
-
-
-
      }
   }
 
