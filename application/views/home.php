@@ -40,7 +40,7 @@ header("Pragma: no-cache");
             {
                 if($message=="success")
                 { ?>
-                    <div class="alert alert-success" role="alert">
+                    <div class="alert alert-success" role="alert" align="center">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <span style="color:#1B2E1E;"><?php echo "Property has now been entered!";?></span>
                     </div>
@@ -48,19 +48,38 @@ header("Pragma: no-cache");
                 <?php
                 if($message=="fail")
                 { ?>
-                    <div class="alert alert-info" role="alert">
+                    <div class="alert alert-info" role="alert" align="center">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <span style="color:#F24B4B;"><?php echo "Unable to enter data!";?></span>
                     </div>
                 <?php }
                 if($message=="nope")
                 { ?>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger" role="alert" align="center">
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <strong>Error!</strong> <span style="color:#F24B4B;"><?php echo "No property by that name was found";?></span><a href="home" style="margin-left:1em;" class="btn btn-info">Back</a>
                 </div>
                 <?php }
+                if($message=="deleted")
+                { ?>
+                <div class="alert alert-success" role="alert" align="center">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <span style="color:#F24B4B;"><?php echo "Property has now been deleted.";?></span>
+                </div>
+                <?php
+                }?>
+                <?php
+                if($message=="undeleted")
+                { ?>
+                <div class="alert alert-success" role="alert" align="center">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <span style="color:#F24B4B;"><?php echo "Property has could not be deleted.";?></span>
+                </div>
+                <?php
+                }?>
+                <?php
                 } ?>
+
             <div class="table-responsive">
             <table class="table table-bordered" id="table" style="margin-top:2em;">
 
