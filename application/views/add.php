@@ -1,6 +1,12 @@
 <?php
 $this->load->view('navheader');
 ?>
+<?php
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 
 <!-- collapse the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">

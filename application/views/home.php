@@ -2,6 +2,12 @@
 $this->load->view('navheader');
 ?>
 
+<?php
+
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 <!-- collapse the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
@@ -74,7 +80,7 @@ $this->load->view('navheader');
 <tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td>
     <td>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <form>
+        <?php echo form_open('property/home'); ?>
             <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit/View</button>
         </form>
         </div>
