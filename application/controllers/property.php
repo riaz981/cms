@@ -67,6 +67,23 @@ class property extends CI_Controller{
       }
   }
 
+  //this is for the navigation link that goes to add page
+  public function edit(){
+
+      if($this->session->userdata('validated')){
+          $id = $this->input->post('id');
+          $data = $this->propertymodel->getById($id);
+          //$this->load->helper(array('form'));
+          //$this->load->view('edit');
+      }
+
+      else{
+          $data['message']="Invalid username or password. Please try again!";
+          $this->load->helper(array('form'));
+          $this->load->view('login',$data);
+      }
+  }
+
   //link for home page
   public function home(){
 
