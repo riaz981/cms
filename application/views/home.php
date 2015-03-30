@@ -99,7 +99,8 @@ header("Pragma: no-cache");
 <tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td>
     <td>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <?php echo form_open('property/home'); ?>
+        <?php echo form_open('property/edit'); ?>
+            <input type="hidden" name="id" value="<?php echo $row['id'];?>">
             <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit/View</button>
         </form>
         </div>
