@@ -60,7 +60,7 @@ header("Pragma: no-cache");
                 { ?>
                     <div class="alert alert-info" role="alert" align="center">
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <span style="color:#1B2E1E;"><?php echo "Select property again as not all data was entered!";?></span>
+                      <span style="color:#1B2E1E;"><?php echo "Select property again as not all data was entered by you!";?></span>
                     </div>
                 <?php } ?>
 
