@@ -250,10 +250,11 @@ class property extends CI_Controller{
                 $this->load->helper(array('form'));
                 $this->load->view('home',$data);
             }
-            else
+            else{
                 $data['message']="fail";
                 $this->load->helper(array('form'));
                 $this->load->view('home',$data);
+            }
         }
 
   }
@@ -336,10 +337,11 @@ class property extends CI_Controller{
                 $this->load->helper(array('form'));
                 $this->load->view('home',$data);
             }
-            else
+            else{
                 $data['message']="fail";
                 $this->load->helper(array('form'));
                 $this->load->view('home',$data);
+            }
         }
 
   }
