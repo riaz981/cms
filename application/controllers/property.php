@@ -72,9 +72,38 @@ class property extends CI_Controller{
 
       if($this->session->userdata('validated')){
           $id = $this->input->post('id');
-          $data = $this->propertymodel->getById($id);
-          //$this->load->helper(array('form'));
-          //$this->load->view('edit');
+          $query = $this->propertymodel->getById($id);
+          foreach ($query as $row){
+              $data['name'] = $row->name;
+              $data['address'] = $row->address;
+              $data['url'] = $row->url;
+
+              $icon = json_decode($row->icon);
+              $data['typeProperty'] = $icon->typeProperty;
+              $data['guestNumber'] = $icon->guestNumber;
+              $data['bedroomNumber'] = $icon->bedroomNumber;
+              $data['bedsNumber'] = $icon->bedsNumber;
+
+              $data['minimumStaty'] = $row->minimumStay;
+
+              $rates = json_decode($row->rates);
+
+              $data['nightlyRate'] = $rates->nightlyRate;
+              $data['weeklyRate'] = $rates->weeklyRate;
+              $data['monthlyRate'] = $rates->monthlyRate;
+              $data['cleaningRate'] = $rates->cleaningRate;
+
+              $data['overview'] = $row->overview;
+              $data['dining'] = $row->dining;
+              $data['bathroomDescription'] = $row->bathroomDescription;
+              $data['attactionDescription'] = $row->attractionDescription;
+              $data['leisureDescription'] = $row->leisureDescription;
+              $data['businessDescription'] = $row->businessDescription;
+              $data['id'] = $row->id;
+
+          }
+          $this->load->helper(array('form'));
+          $this->load->view('edit',$data);
       }
 
       else{
