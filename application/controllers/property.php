@@ -106,9 +106,8 @@ class property extends CI_Controller{
               $data['sportsDescription'] = $row->sportsDescription;
               $data['id'] = $row->id;
 
-              //echo $data['overview'];
-
           }
+
           $this->load->helper(array('form'));
           $this->load->view('edit',$data);
       }
@@ -328,7 +327,7 @@ class property extends CI_Controller{
             $data['sportsDescription'] = $this->input->post('sportsDescription');
 
             $check = $this->propertymodel->updateById($data,$id);
-            
+
             if($check){
 
                 $data = $this->getEverything();
