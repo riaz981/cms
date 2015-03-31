@@ -45,6 +45,17 @@ header("Pragma: no-cache");
                       <span style="color:#1B2E1E;"><?php echo "Property has now been entered!";?></span>
                     </div>
                 <?php } ?>
+
+                <?php
+                if($message=="success edit")
+                { ?>
+                    <div class="alert alert-success" role="alert" align="center">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <span style="color:#1B2E1E;"><?php echo "Property has now been modified!";?></span>
+                    </div>
+                <?php } ?>
+
+
                 <?php
                 if($message=="fail")
                 { ?>
