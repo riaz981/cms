@@ -22,8 +22,14 @@ header("Pragma: no-cache");
 </div>
 </nav> <!-- main navbar closes -->
 
+<div style="margin-top:3em;">
+<ol class="breadcrumb" style="background-color:#E4E0E0;">
+  <li><a href="home">Home</a></li><span> / </span>
+  <li class="active">Add</li>
+</ol>
+</div>
 
-<div class="container" style="padding-top: 60px;">
+<div class="container" style="margin-top:-2em;">
   <div class="row formationadd">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div><span style="color:#F24B4B;"><?php echo validation_errors(); ?></span></div>

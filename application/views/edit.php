@@ -23,10 +23,17 @@ header("Pragma: no-cache");
 </div>
 </nav> <!-- main navbar closes -->
 
+<div style="margin-top:3em;">
+<ol class="breadcrumb" style="background-color:#E4E0E0;">
+  <li><a href="home">Home</a></li><span> / </span>
+  <li class="active">Edit</li>
+</ol>
+</div>
 
-<div class="container" style="padding-top: 60px;">
+<div class="container" style="margin-top:-2em;">
   <div class="row formationadd">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
       <div><span style="color:#F24B4B;"><?php echo validation_errors(); ?></span></div>
       <?php if(isset($message)) echo $message; ?>
       <?php echo form_open('property/editProperty'); ?>
@@ -141,7 +148,7 @@ header("Pragma: no-cache");
                         <textarea class="form-control" id="businessDescription" name="businessDescription" placeholder="Local Service and Businesses Description" rows="3" required><?php echo $businessDescription; ?></textarea>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:0.4em;">
                         <label for="sportsDescription">Sports Adventures Activity Description: <span style="color:#F24B4B;">*</span></label>
