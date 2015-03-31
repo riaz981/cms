@@ -53,8 +53,11 @@ Class Propertymodel extends CI_Model{
 
     }
 
-    function updateById($id){
-        
+    function updateById($data,$id){
+        echo $id;
+
+        var_dump($data);
+
     }
 
     /*
