@@ -288,13 +288,15 @@ class property extends CI_Controller{
 
 
       //if there is any validation failure redirect
-      //back to the form.
+      //back to home.
       if($this->form_validation->run()==FALSE){
-          $this->load->view('add');
+          $data['message'] = "fail edit";
+          $this->load->view('home',$data);
       }
 
       //else call the model function to insert data
       else{
+            $id = $this->input->post('id');
             $data['name'] = $this->input->post('name');
             $data['address'] = $this->input->post('address');
             $data['url'] = $this->input->post('url');
@@ -325,7 +327,8 @@ class property extends CI_Controller{
             $data['businessDescription'] = $this->input->post('businessDescription');
             $data['sportsDescription'] = $this->input->post('sportsDescription');
 
-            $check = $this->propertymodel->insertData($data);
+            $check = $this->propertymodel->updateById($data,$id);
+            
             if($check){
 
                 $data = $this->getEverything();
