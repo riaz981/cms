@@ -141,7 +141,7 @@ header("Pragma: no-cache");
                         <textarea class="form-control" id="businessDescription" name="businessDescription" placeholder="Local Service and Businesses Description" rows="3" required><?php echo $businessDescription; ?></textarea>
                     </div>
                 </div>
-                <?php echo $sportsDescription;?>
+                
                 <div class="form-group">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:0.4em;">
                         <label for="sportsDescription">Sports Adventures Activity Description: <span style="color:#F24B4B;">*</span></label>
