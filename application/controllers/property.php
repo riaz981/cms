@@ -67,12 +67,15 @@ class property extends CI_Controller{
       }
   }
 
-  //this is for the navigation link that goes to add page
+  //this is for the navigation link that goes to edit page
+  //gets all data from database specific to the id.
   public function edit(){
 
       if($this->session->userdata('validated')){
+
           $id = $this->input->post('id');
           $query = $this->propertymodel->getById($id);
+          
           foreach ($query as $row){
               $data['name'] = $row->name;
               $data['address'] = $row->address;
