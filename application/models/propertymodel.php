@@ -54,10 +54,16 @@ Class Propertymodel extends CI_Model{
     }
 
     function updateById($data,$id){
-        echo $id;
+        $this->db->where('id',$id);
+        $this->db->update('wp_property',$data);
 
-        var_dump($data);
+        if($this->db->affected_rows()>0){
+            return true;
+        }
 
+        else{
+            return false;
+        }
     }
 
     /*
