@@ -53,6 +53,10 @@ Class Propertymodel extends CI_Model{
 
     }
 
+    function updateById($id){
+        
+    }
+
     /*
         Gets all the information from the database and
         throws information back to home function.
