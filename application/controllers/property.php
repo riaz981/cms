@@ -75,7 +75,7 @@ class property extends CI_Controller{
 
           $id = $this->input->post('id');
           $query = $this->propertymodel->getById($id);
-          
+
           foreach ($query as $row){
               $data['name'] = $row->name;
               $data['address'] = $row->address;
@@ -87,7 +87,7 @@ class property extends CI_Controller{
               $data['bedroomNumber'] = $icon->bedroomNumber;
               $data['bedsNumber'] = $icon->bedsNumber;
 
-              $data['minimumStaty'] = $row->minimumStay;
+              $data['minimumStay'] = $row->minimumStay;
 
               $rates = json_decode($row->rates);
 
@@ -98,11 +98,15 @@ class property extends CI_Controller{
 
               $data['overview'] = $row->overview;
               $data['dining'] = $row->dining;
+              $data['bedroomDescription'] = $row->bedroomDescription;
               $data['bathroomDescription'] = $row->bathroomDescription;
-              $data['attactionDescription'] = $row->attractionDescription;
+              $data['attractionDescription'] = $row->attractionDescription;
               $data['leisureDescription'] = $row->leisureDescription;
               $data['businessDescription'] = $row->businessDescription;
+              $data['sportsDescription'] = $row->sportsDescription;
               $data['id'] = $row->id;
+
+              //echo $data['overview'];
 
           }
           $this->load->helper(array('form'));
@@ -243,6 +247,89 @@ class property extends CI_Controller{
 
                 $data = $this->getEverything();
                 $data['message']="success";
+
+                $this->load->helper(array('form'));
+                $this->load->view('home',$data);
+            }
+            else
+                $data['message']="fail";
+                $this->load->helper(array('form'));
+                $this->load->view('home',$data);
+        }
+
+  }
+
+  //Edits a property. If successful calls the property model
+  //property model then inserts the data in mySql.
+  //passes $data to the model's function.
+  public function editProperty(){
+      $this->load->helper(array('form'));
+      $this->load->library('form_validation');
+
+      //setting the rules for form validation.
+      $this->form_validation->set_rules('name','Name','required');
+      $this->form_validation->set_rules('address','Address','required');
+      $this->form_validation->set_rules('url', 'Url', 'required');
+      $this->form_validation->set_rules('typeProperty','Property Type','required');
+      $this->form_validation->set_rules('guestNumber', 'Number of Guests','required');
+      $this->form_validation->set_rules('bedroomNumber', 'Number of Bedrooms','required');
+      $this->form_validation->set_rules('bedsNumber','Number of Beds','required');
+      $this->form_validation->set_rules('minimumStay','Minimum Stay','required');
+      $this->form_validation->set_rules('nightlyRate','Nightly Rate','required');
+      $this->form_validation->set_rules('weeklyRate','Weekly Rate','required');
+      $this->form_validation->set_rules('monthlyRate','Monthly Rate','required');
+      $this->form_validation->set_rules('cleaningRate','Cleaning Rate','required');
+      $this->form_validation->set_rules('bathroomDescription', 'Bathroom Description','required');
+      $this->form_validation->set_rules('bedroomDescription','Bedroom Description','required');
+      $this->form_validation->set_rules('attractionDescription','Description of Attractions','required');
+      $this->form_validation->set_rules('leisureDescription','Leisure Description','required');
+      $this->form_validation->set_rules('businessDescription','Business Description', 'required');
+      $this->form_validation->set_rules('sportsDescription','Sports Description','required');
+
+
+      //if there is any validation failure redirect
+      //back to the form.
+      if($this->form_validation->run()==FALSE){
+          $this->load->view('add');
+      }
+
+      //else call the model function to insert data
+      else{
+            $data['name'] = $this->input->post('name');
+            $data['address'] = $this->input->post('address');
+            $data['url'] = $this->input->post('url');
+
+            $icon['typeProperty'] = $this->input->post('typeProperty');
+            $icon['guestNumber'] = $this->input->post('guestNumber');
+            $icon['bedroomNumber'] = $this->input->post('bedroomNumber');
+            $icon['bedsNumber'] = $this->input->post('bedsNumber');
+
+            $data['icon'] = json_encode($icon);
+
+            $data['minimumStay'] = $this->input->post('minimumStay');
+
+            $rates['nightlyRate'] = $this->input->post('nightlyRate');
+            $rates['weeklyRate'] = $this->input->post('weeklyRate');
+            $rates['monthlyRate'] = $this->input->post('monthlyRate');
+            $rates['cleaningRate'] = $this->input->post('cleaningRate');
+
+            $data['rates'] = json_encode($rates);
+
+            $data['overview'] = $this->input->post('overview');
+
+            $data['dining'] = $this->input->post('dining');
+            $data['bathroomDescription'] = $this->input->post('bathroomDescription');
+            $data['bedroomDescription'] = $this->input->post('bedroomDescription');
+            $data['attractionDescription'] = $this->input->post('attractionDescription');
+            $data['leisureDescription'] = $this->input->post('leisureDescription');
+            $data['businessDescription'] = $this->input->post('businessDescription');
+            $data['sportsDescription'] = $this->input->post('sportsDescription');
+
+            $check = $this->propertymodel->insertData($data);
+            if($check){
+
+                $data = $this->getEverything();
+                $data['message']="success edit";
 
                 $this->load->helper(array('form'));
                 $this->load->view('home',$data);
