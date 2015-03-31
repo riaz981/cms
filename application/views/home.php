@@ -33,7 +33,7 @@ header("Pragma: no-cache");
 </nav> <!-- main navbar closes -->
 
 <div class="container" style="padding-top: 60px;">
-    <div class="row formationaddtable" style="min-height:42em;">
+    <div class="row formationaddtable" style="min-height:50em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h2 align="center">List of Properties</h2>
             <?php if(isset($message))
