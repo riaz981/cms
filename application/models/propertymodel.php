@@ -74,6 +74,12 @@ Class Propertymodel extends CI_Model{
          echo "Could not fetch records";
     }
 
+    /*
+        Gets data depending on the id passed.
+        If successful throws back the data
+        to the controller function that called
+        it.
+    */
     function getById($id){
         $query = $this->db->get_where('wp_property',array('id'=>$id));
         if($query->num_rows()==1){
