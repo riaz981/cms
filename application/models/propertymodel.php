@@ -66,6 +66,31 @@ Class Propertymodel extends CI_Model{
         }
     }
 
+    function getAllPicById($id){
+        $this->db->select('id,photo_url,photo_name');
+        $this->db->where('id',$id);
+        $query = $this->db->get('wp_property');
+        if($query->num_rows()>=1){
+            return $query->result();
+        }
+        else
+         echo "Could not fetch records";
+    }
+
+    function getPicNameById($id){
+        $this->db->select('photo_name');
+        $this->db->where('id',$id);
+        $query = $this->db->get('wp_property');
+
+        if($query->num_rows()>=1){
+            $photo = array_pop($query->result());
+            return $photo->photo_name;
+        }
+        else
+         echo "Could not fetch records";
+
+    }
+
     /*
         Gets all the information from the database and
         throws information back to home function.
