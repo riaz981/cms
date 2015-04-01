@@ -137,6 +137,65 @@ class property extends CI_Controller{
      }
   }
 
+  public function photo(){
+
+      if($this->session->userdata('validated')){
+         $id=1;
+         $query= $this->propertymodel->getAllPicById($id);
+         foreach($query as $row){
+             $photo['photo_url']=$row->photo_url;
+             //$photo['photo_name']=$row->photo_name;
+             //$data['photo_url'] = json_decode($photo['photo_url']);
+             $data['photo_url'] = $photo['photo_url'];
+             //$data['photo_name'] = json_decode($photo['photo_name']);
+         }
+
+         $this->load->helper(array('form'));
+         $this->load->view('photo',$data);
+     }
+
+     else{
+
+         $data['message']="Invalid username or password. Please try again!";
+         $this->load->helper(array('form'));
+         $this->load->view('login',$data);
+     }
+  }
+
+  public function photoUpload(){
+
+    /*
+      $id=1;
+      $photo[]= "1.jpg";
+      $photo[]= "2.jpg";
+      $photo[]= "3.jpg";
+      $photo[]= "4.jpg";
+      $photo[]= "5.jpg";
+      $photo[]= "6.jpg";
+      //$data['photo_url'] = "http://apartmentclub.localhost/wp-content/themes/accesspress-ray/images/demo/dickson/";
+      $data['photo_name'] = json_encode($photo);
+      //echo gettype($data['photo_name']);
+      $this->db->where('id', $id);
+      $this->db->update('wp_property', $data);
+      if($this->db->affected_rows()>0){
+          echo "Done again!";
+      }
+
+      else{
+          echo "Alas!";
+      }
+*/
+
+
+      $id=1;
+      $photos = $this->input->post('photos');
+      //$count = count($photos);
+      $photo_names = $this->propertymodel->getPicNameById($id);
+      //var_dump($photo_names);
+      $photo = json_decode($photo_names);
+      var_dump($photo);
+  }
+
   /*
     calls the propertymodel function getAll to
     fetch all the data of the table. Returs
