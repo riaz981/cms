@@ -142,12 +142,12 @@ class property extends CI_Controller{
       if($this->session->userdata('validated')){
          $id=1;
          $query= $this->propertymodel->getAllPicById($id);
+         $photo_names = $this->propertymodel->getPicNameById($id);
+         $data['photo_name'] = json_decode($photo_names);
+         $data['id'] = $id;
          foreach($query as $row){
              $photo['photo_url']=$row->photo_url;
-             //$photo['photo_name']=$row->photo_name;
-             //$data['photo_url'] = json_decode($photo['photo_url']);
              $data['photo_url'] = $photo['photo_url'];
-             //$data['photo_name'] = json_decode($photo['photo_name']);
          }
 
          $this->load->helper(array('form'));
@@ -185,15 +185,13 @@ class property extends CI_Controller{
           echo "Alas!";
       }
 */
-
-
-      $id=1;
-      $photos = $this->input->post('photos');
-      //$count = count($photos);
-      $photo_names = $this->propertymodel->getPicNameById($id);
-      //var_dump($photo_names);
-      $photo = json_decode($photo_names);
-      var_dump($photo);
+    $id = $this->input->post('id');
+    $photo_names = $this->input->post('photos');
+    $url = $this->propertymodel->getPicUrlById($id);
+    $config['upload_path'] = $url;
+    $config['allowed_types'] = 'jpg';
+    $config['max_size'] = '2048';
+    $this->load->library('upload',$config);
   }
 
   /*
