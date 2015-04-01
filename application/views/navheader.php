@@ -4,6 +4,7 @@
 <title>CMS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.css"); ?>" />
+<link rel="stylesheet" href="<?php echo base_url("assets/css/ekko-lightbox.css"); ?>" />
 <link rel="stylesheet" href="<?php echo base_url("assets/css/master.css"); ?>" />
 </head>
 
@@ -14,7 +15,7 @@
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
     ?>
-    
+
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand toggle get grouped for better mobile display -->
