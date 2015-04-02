@@ -184,20 +184,8 @@ class property extends CI_Controller{
             $this->load->library('image_lib', $config);
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
-            /*
-            $photo_names = $this->propertymodel->getPicNameById($id);
-            $pictures = json_decode($photo_names);
-            $i=0;
-            foreach($pictures as $photos){
-                $photo[$i] = $photos;
-                $i++;
-            }
-            $count = count($photo);
-            $photo[$count] = $_FILES['userfile']['name'];
-            $data['photo_name'] = json_encode($photo);
 
-            $this->propertymodel->propertymodel->uploadPicById($id,$data);
-            */
+            $this->insertImage($_FILES['userfile']['name']);
         }
         else
             echo "Alas!";
@@ -206,6 +194,23 @@ class property extends CI_Controller{
 
      $this->photo();
 
+    }
+
+    public function insertImage($name){
+
+        $id=$this->input->post('id');
+        $photo_names = $this->propertymodel->getPicNameById($id);
+        $pictures = json_decode($photo_names);
+        $i=0;
+        foreach($pictures as $photos){
+            $photo[$i] = $photos;
+            $i++;
+        }
+        $count = count($photo);
+        $photo[$count] = $name;
+        $data['photo_name'] = json_encode($photo);
+
+        $this->propertymodel->propertymodel->uploadPicById($id,$data);
     }
 
     public function configEdit(){
