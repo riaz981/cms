@@ -202,9 +202,6 @@ class property extends CI_Controller{
         else
             echo "Alas!";
 
-
-
-
      }
 
      $this->photo();
