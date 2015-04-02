@@ -51,11 +51,12 @@ header("Pragma: no-cache");
                  for($i=0;$i<$max;$i++){?>
                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top:0.4em;">
                  <a href="<?php echo $photo_url.'/'.$photo_name[$i]; ?>" ><img src="<?php echo $photo_url.'/'.$photo_name[$i]; ?>" class="img-responsive" height="200" width="300"></a>
+
                  </div>
                 <?php }}  ?>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <?php echo form_open('property/photoUpload'); ?>
-                <input type="file" multiple="multiple" name="photos[]" />
+            <?php echo form_open_multipart('property/photoUpload');?>
+                <input name="userfile[]" id="userfile" type="file" multiple="" />
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <input type="submit" value="Submit">
             </form>
