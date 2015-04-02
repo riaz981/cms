@@ -184,7 +184,7 @@ class property extends CI_Controller{
             $this->load->library('image_lib', $config);
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
-
+            /*
             $photo_names = $this->propertymodel->getPicNameById($id);
             $pictures = json_decode($photo_names);
             $i=0;
@@ -197,7 +197,7 @@ class property extends CI_Controller{
             $data['photo_name'] = json_encode($photo);
 
             $this->propertymodel->propertymodel->uploadPicById($id,$data);
-
+            */
         }
         else
             echo "Alas!";
