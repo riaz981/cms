@@ -164,31 +164,8 @@ class property extends CI_Controller{
 
   public function photoUpload(){
 
-    /*
-      $id=1;
-      $photo[]= "1.jpg";
-      $photo[]= "2.jpg";
-      $photo[]= "3.jpg";
-      $photo[]= "4.jpg";
-      $photo[]= "5.jpg";
-      $photo[]= "6.jpg";
-      //$data['photo_url'] = "http://apartmentclub.localhost/wp-content/themes/accesspress-ray/images/demo/dickson/";
-      $data['photo_name'] = json_encode($photo);
-      //echo gettype($data['photo_name']);
-      $this->db->where('id', $id);
-      $this->db->update('wp_property', $data);
-      if($this->db->affected_rows()>0){
-          echo "Done again!";
-      }
-
-      else{
-          echo "Alas!";
-      }
-*/
-
-
     $count = count($_FILES['userfile']['name']);
-
+    $id=$this->input->post('id');
     $files = $_FILES;
     for($i=0;$i<$count;$i++){
         $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
@@ -198,14 +175,39 @@ class property extends CI_Controller{
         $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
 
         $config = $this->configEdit();
+
         $this->load->library('upload', $config);
 
-        if($this->upload->do_upload())
-            echo "Image ".$_FILES['userfile']['name']." was successfully added!"."<br>";
+        if($this->upload->do_upload()){
+            //echo "Image ".$_FILES['userfile']['name']." was successfully added!"."<br>";
+            $config = $this->imageConfig($_FILES['userfile']['name']);
+            $this->load->library('image_lib', $config);
+            $this->image_lib->initialize($config);
+            $this->image_lib->resize();
+
+            $photo_names = $this->propertymodel->getPicNameById($id);
+            $pictures = json_decode($photo_names);
+            $i=0;
+            foreach($pictures as $photos){
+                $photo[$i] = $photos;
+                $i++;
+            }
+            $count = count($photo);
+            $photo[$count] = $_FILES['userfile']['name'];
+            $data['photo_name'] = json_encode($photo);
+
+            $this->propertymodel->propertymodel->uploadPicById($id,$data);
+
+        }
         else
             echo "Alas!";
 
+
+
+
      }
+
+     $this->photo();
 
     }
 
@@ -216,9 +218,24 @@ class property extends CI_Controller{
 
         $config['upload_path'] = $url;
         $config['allowed_types'] = 'jpg';
-        $config['max_size']	= '20000';
-        $config['max_width']  = '100000';
-        $config['max_height']  = '10000';
+        $config['max_size']	= '0';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
+        return $config;
+    }
+
+    public function imageConfig($name){
+
+        $id = $this->input->post('id');
+        $url = $this->propertymodel->getUploadUrlById($id);
+        $sourceImage = $url.$name;
+        echo $sourceImage;
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $sourceImage;
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = FALSE;
+        $config['width'] = 1250;
+        $config['height'] = 596;
         return $config;
     }
 
