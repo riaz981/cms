@@ -117,6 +117,20 @@ Class Propertymodel extends CI_Model{
          echo "Could not fetch records";
     }
 
+    function uploadPicById($id,$data){
+
+        $this->db->where('id', $id);
+        $this->db->update('wp_property', $data);
+        if($this->db->affected_rows()>0){
+            echo "Done again!";
+        }
+
+        else{
+            echo "Alas!";
+        }
+
+    }
+
     /*
         Gets all the information from the database and
         throws information back to home function.
