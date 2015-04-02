@@ -185,63 +185,41 @@ class property extends CI_Controller{
           echo "Alas!";
       }
 */
-/*
-    $id = $this->input->post('id');
-    $photo_names = $this->input->post('userfile');
-    $count = count($photo_names);
-    var_dump($photo_names);
-    //for($i=0;$i<$count;$i++)
 
-    $url = $this->propertymodel->getUploadUrlById($id);
-    echo $url;
 
-    $config['upload_path'] = $url;
-    $config['allowed_types'] = 'jpg';
-    $config['max_size'] = '2048';
-    $config['max_width'] = '10240';
-    $config['max_height'] = '10240';
-    $config['overwrite'] = FALSE;
-    $this->load->library('upload', $config);
+    $count = count($_FILES['userfile']['name']);
 
-    if(!$this->upload->data('userfile')){
-        $error = array('error'=>$this->upload->display_errors());
-        var_dump($error);
+    $files = $_FILES;
+    for($i=0;$i<$count;$i++){
+        $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+        $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+        $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+        $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+        $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+
+        $config = $this->configEdit();
+        $this->load->library('upload', $config);
+
+        if($this->upload->do_upload())
+            echo "Image ".$_FILES['userfile']['name']." was successfully added!"."<br>";
+        else
+            echo "Alas!";
+
+     }
+
     }
 
-    else{
-        $data = array('upload_data'=>$this->upload->data());
-        var_dump($data);
-    }
-    */
-    var_dump($_FILES);
-    /*
-    $name_array = array();
-    $count = count($_FILES['userfile']['size']);
-    foreach($_FILES as $key=>$value)
-    for($s=0; $s<=$count-1; $s++) {
-    $_FILES['userfile']['name']=$value['name'][$s];
-    $_FILES['userfile']['type']    = $value['type'][$s];
-    $_FILES['userfile']['tmp_name'] = $value['tmp_name'][$s];
-    $_FILES['userfile']['error']       = $value['error'][$s];
-    $_FILES['userfile']['size']    = $value['size'][$s];
-        $config['upload_path'] = '/var/www/html/apartmentclub/wp-content/themes/accesspress-ray/images/demo/dickson/';
-    $config['allowed_types'] = 'gif|jpg|png';
-    $config['max_size']	= '20000';
-    $config['max_width']  = '100000';
-    $config['max_height']  = '10000';
-    $this->load->library('upload', $config);
-    if($this->upload->do_upload()){
-        echo "Success";
-    }
-    $data = $this->upload->data();
-    $name_array[] = $data['file_name'];
-    }
-    $names= implode(',', $name_array);
-    /* $this->load->database();
-    $db_data = array('id'=> NULL,
-    'name'=> $names);
-    $this->db->insert('testtable',$db_data);
-    */	//print_r($names);*/
+    public function configEdit(){
+
+        $id = $this->input->post('id');
+        $url = $this->propertymodel->getUploadUrlById($id);
+
+        $config['upload_path'] = $url;
+        $config['allowed_types'] = 'jpg';
+        $config['max_size']	= '20000';
+        $config['max_width']  = '100000';
+        $config['max_height']  = '10000';
+        return $config;
     }
 
 
