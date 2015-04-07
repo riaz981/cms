@@ -13,7 +13,7 @@ header("Pragma: no-cache");
     <ul class="nav navbar-nav">
         <li><a href="home">Home<span class="sr-only">(current)</span></a></li>
         <li><a href="add">Add Property</a></li>
-        <li class="active"><a href="photo">Upload Photo</a></li>
+        <li class="active"><a href="photo">Add Photo</a></li>
     </ul>
 
     <?php
