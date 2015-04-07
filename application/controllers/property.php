@@ -140,7 +140,8 @@ class property extends CI_Controller{
   public function photo(){
 
       if($this->session->userdata('validated')){
-         $id=1;
+         $id=$this->input->post('id');
+         $name=$this->input->post('name');
          $query= $this->propertymodel->getAllPicById($id);
          $photo_names = $this->propertymodel->getPicNameById($id);
          $data['photo_name'] = json_decode($photo_names);
@@ -149,7 +150,7 @@ class property extends CI_Controller{
              $photo['photo_url']=$row->photo_url;
              $data['photo_url'] = $photo['photo_url'];
          }
-
+         $data['name'] = $name;
          $this->load->helper(array('form'));
          $this->load->view('photo',$data);
      }
@@ -196,6 +197,56 @@ class property extends CI_Controller{
 
     }
 
+    public function photoAdd(){
+
+          $count = count($_FILES['userfile']['name']);
+          //echo $count;
+
+          $name = $this->input->post('name');
+
+          $files = $_FILES;
+          for($i=0;$i<$count;$i++){
+              $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+              $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+              $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+              $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+              $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+
+              $config = $this->configEditAdd($name);
+
+              $this->load->library('upload', $config);
+
+              if($this->upload->do_upload()){
+                  //echo "Image ".$_FILES['userfile']['name']." was successfully added!"."<br>";
+                  $config = $this->imageConfigAdd($_FILES['userfile']['name'],$name);
+                  $this->load->library('image_lib', $config);
+                  $this->image_lib->initialize($config);
+                  $this->image_lib->resize();
+                  //echo $_FILES['userfile']['name'];
+
+                  $this->insertImageAdd($_FILES['userfile']['name'],$name);
+              }
+                  else
+                      echo "Alas!";
+
+                }
+
+              $queryId = $this->propertymodel->getIdByName($name);
+
+              $query= $this->propertymodel->getAllPicById($queryId);
+              $photo_names = $this->propertymodel->getPicNameById($queryId);
+              $data['photo_name'] = json_decode($photo_names);
+              $data['id'] = $queryId;
+              foreach($query as $row){
+                  $photo['photo_url']=$row->photo_url;
+                  $data['photo_url'] = $photo['photo_url'];
+              }
+              $data['name'] = $name;
+              return true;
+
+
+    }
+
     public function insertImage($name){
 
         $id=$this->input->post('id');
@@ -216,6 +267,7 @@ class property extends CI_Controller{
     public function configEdit(){
 
         $id = $this->input->post('id');
+
         $url = $this->propertymodel->getUploadUrlById($id);
 
         $config['upload_path'] = $url;
@@ -226,12 +278,98 @@ class property extends CI_Controller{
         return $config;
     }
 
+    public function configEditAdd($name){
+
+        $query=$this->propertymodel->getSpecific($name);
+
+        $i=0;
+        if(isset($query)){
+            foreach ($query as $row){
+                $id = $row->id;
+                $i++;
+            }
+        }
+
+        $url = $this->propertymodel->getUploadUrlById($id);
+        echo $url;
+        $config['upload_path'] = $url;
+        $config['allowed_types'] = 'jpg';
+        $config['max_size']	= '0';
+        $config['max_width']  = '0';
+        $config['max_height']  = '0';
+        return $config;
+    }
+
+    public function insertImageAdd($name,$recordName){
+
+        $query=$this->propertymodel->getSpecific($recordName);
+
+        $i=0;
+        if(isset($query)){
+            foreach ($query as $row){
+                $id = $row->id;
+                $i++;
+            }
+        }
+
+
+        $photo_names = $this->propertymodel->getPicNameById($id);
+        if($photo_names == NULL){
+            $i = 0;
+            $photo[$i] = $name;
+            $data['photo_name'] = json_encode($photo);
+
+            $this->propertymodel->propertymodel->uploadPicById($id,$data);
+        }
+
+
+        else{
+
+            $pictures = json_decode($photo_names);
+
+            $i=0;
+            foreach($pictures as $photos){
+                $photo[$i] = $photos;
+                $i++;
+            }
+            $count = count($photo);
+            $photo[$count] = $name;
+            $data['photo_name'] = json_encode($photo);
+
+            $this->propertymodel->propertymodel->uploadPicById($id,$data);
+        }
+    }
+
+    public function imageConfigAdd($name,$recordName){
+
+        $query=$this->propertymodel->getSpecific($recordName);
+
+        $i=0;
+        if(isset($query)){
+            foreach ($query as $row){
+                $id = $row->id;
+                $i++;
+            }
+        }
+
+        $url = $this->propertymodel->getUploadUrlById($id);
+        $sourceImage = $url.$name;
+        //echo $sourceImage;
+        $config['image_library'] = 'gd2';
+        $config['source_image'] = $sourceImage;
+        $config['create_thumb'] = FALSE;
+        $config['maintain_ratio'] = FALSE;
+        $config['width'] = 1250;
+        $config['height'] = 596;
+        return $config;
+    }
+
     public function imageConfig($name){
 
         $id = $this->input->post('id');
         $url = $this->propertymodel->getUploadUrlById($id);
         $sourceImage = $url.$name;
-        echo $sourceImage;
+        //echo $sourceImage;
         $config['image_library'] = 'gd2';
         $config['source_image'] = $sourceImage;
         $config['create_thumb'] = FALSE;
@@ -284,6 +422,7 @@ class property extends CI_Controller{
   //property model then inserts the data in mySql.
   //passes $data to the model's function.
   public function addProperty(){
+
       $this->load->helper(array('form'));
       $this->load->library('form_validation');
 
@@ -306,7 +445,7 @@ class property extends CI_Controller{
       $this->form_validation->set_rules('leisureDescription','Leisure Description','required');
       $this->form_validation->set_rules('businessDescription','Business Description', 'required');
       $this->form_validation->set_rules('sportsDescription','Sports Description','required');
-
+      $this->form_validation->set_rules('upload_url','Photo Upload Url', 'required');
 
       //if there is any validation failure redirect
       //back to the form.
@@ -319,6 +458,16 @@ class property extends CI_Controller{
             $data['name'] = $this->input->post('name');
             $data['address'] = $this->input->post('address');
             $data['url'] = $this->input->post('url');
+
+            $oldmask = umask(0);
+            $photoUrl = "/var/www/html/apartmentclub/wp-content/themes/accesspress-ray/images/demo/";
+            $data['upload_url'] = strtolower($this->input->post('upload_url'));
+            $data['upload_url'] = $photoUrl.$data['upload_url'];
+
+            $foldername = strtolower($this->input->post('upload_url'));
+            $data['photo_url'] = "http://apartmentclub.localhost/wp-content/themes/accesspress-ray/images/demo/".$foldername;
+            mkdir($data['upload_url'], 0777);
+            umask($oldmask);
 
             $icon['typeProperty'] = $this->input->post('typeProperty');
             $icon['guestNumber'] = $this->input->post('guestNumber');
@@ -347,7 +496,9 @@ class property extends CI_Controller{
             $data['sportsDescription'] = $this->input->post('sportsDescription');
 
             $check = $this->propertymodel->insertData($data);
-            if($check){
+            $checkpic=$this->photoAdd();
+
+            if($checkpic & $check){
 
                 $data = $this->getEverything();
                 $data['message']="success";
@@ -360,6 +511,8 @@ class property extends CI_Controller{
                 $this->load->helper(array('form'));
                 $this->load->view('home',$data);
             }
+
+
         }
 
   }
