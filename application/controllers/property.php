@@ -74,7 +74,20 @@ class property extends CI_Controller{
       if($this->session->userdata('validated')){
 
           $id = $this->input->post('id');
+
+          $queryPhoto= $this->propertymodel->getAllPicById($id);
+          $photo_names = $this->propertymodel->getPicNameById($id);
+          $data['photo_name'] = json_decode($photo_names);
+          $data['id'] = $id;
+          foreach($queryPhoto as $row){
+              $photo['photo_url']=$row->photo_url;
+              $data['photo_url'] = $photo['photo_url'];
+          }
+
+
           $query = $this->propertymodel->getById($id);
+
+
 
           foreach ($query as $row){
               $data['name'] = $row->name;
@@ -586,6 +599,7 @@ class property extends CI_Controller{
             $data['sportsDescription'] = $this->input->post('sportsDescription');
 
             $check = $this->propertymodel->updateById($data,$id);
+
 
             if($check){
 

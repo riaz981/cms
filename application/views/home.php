@@ -128,7 +128,7 @@ header("Pragma: no-cache");
         <?php echo form_open('property/photo'); ?>
             <input type="hidden" name="name" value="<?php echo $row['name'];?>">
             <input type="hidden" name="id" value="<?php echo $row['id'];?>">
-            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View Photos</button>
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Photos</button>
         </form>
         </div>
 
