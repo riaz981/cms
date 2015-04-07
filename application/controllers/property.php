@@ -119,6 +119,11 @@ class property extends CI_Controller{
               $data['sportsDescription'] = $row->sportsDescription;
               $data['id'] = $row->id;
 
+              $map = json_decode($row->map);
+              $data['latitude'] = $map->latitude;
+              $data['longitude'] = $map->longitude;
+
+
           }
 
           $this->load->helper(array('form'));
@@ -598,6 +603,11 @@ class property extends CI_Controller{
             $data['businessDescription'] = $this->input->post('businessDescription');
             $data['sportsDescription'] = $this->input->post('sportsDescription');
 
+            $map['latitude'] = $this->input->post('latitude');
+            $map['longitude']= $this->input->post('longitude');
+
+            $data['map'] = json_encode($map);
+
             $check = $this->propertymodel->updateById($data,$id);
 
 
@@ -614,6 +624,8 @@ class property extends CI_Controller{
                 $this->load->helper(array('form'));
                 $this->load->view('home',$data);
             }
+
+
         }
 
   }
