@@ -180,6 +180,51 @@ header("Pragma: no-cache");
                 </fieldset>
             </div>
 
+            <div class="form-group">
+                <fieldset>
+                    <legend style="color: #1489a6; margin-top:0.6em;">Map: </legend>
+
+                    <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+                    <script>
+
+                        function initialize() {
+
+                          var latitude = undefined;
+                          var longitude = undefined;
+
+                          latitude = document.getElementById("latitude").value;
+                          longitude = document.getElementById("longitude").value;
+
+                          var mapProp = {
+                            center:new google.maps.LatLng(latitude,longitude),
+                            zoom:15,
+                            mapTypeId:google.maps.MapTypeId.ROADMAP
+                          };
+                          var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                          var marker = new google.maps.Marker({
+                                position: new google.maps.LatLng(latitude,longitude),
+                                map: map
+                            });
+                        }
+                        google.maps.event.addDomListener(window, 'load', initialize);
+
+
+                    </script>
+
+                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="googleMap" style="width:100%;height:380px;"></div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label for="latitude">Latitude: <span style="color:#F24B4B;">*</span></label>
+                        <input type="text" class="form-control" id="latitude" name="latitude" value="<?php echo $latitude; ?>" placeholder="Latitude" required>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <label for="longitude">Longitude: <span style="color:#F24B4B;">*</span></label>
+                        <input type="text" class="form-control" id="longitude" name="longitude" value="<?php echo $longitude; ?>" placeholder="Longitude" required>
+                    </div>
+                </fieldset>
+            </div>
+
         </div>
         <div class="footerForm">
             <div align="center">
