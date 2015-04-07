@@ -179,6 +179,21 @@ Class Propertymodel extends CI_Model{
             echo "Could not fetch records";
     }
 
+    function getIdByName($name){
+        $this->db->like('name',$name,'both');
+        $this->db->select('id');
+        $query=$this->db->get('wp_property');
+
+        if($query->num_rows()>=1){
+            $propertyId = array_pop($query->result());
+            return $propertyId->id;
+        }
+        
+        else
+            echo "Could not fetch records";
+    }
+
+
     function deleteRecord($id){
         $this->db->delete('wp_property',array('id'=>$id));
         if($this->db->affected_rows()>0){
