@@ -66,3 +66,9 @@ body{
     margin-top:0.4em;
     margin-bottom:0.4em;
 }
+
+#googleMap{
+    width:100%;
+    height:500px;
+    border: 0.4px solid #BCB9B9;
+}
