@@ -118,13 +118,21 @@ header("Pragma: no-cache");
                         foreach($property as $row){ ?>
 <tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td>
     <td>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <?php echo form_open('property/edit'); ?>
             <input type="hidden" name="id" value="<?php echo $row['id'];?>">
             <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit/View</button>
         </form>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-5 col-sm-push-1 col-xs-5 col-xs-push-2">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <?php echo form_open('property/photo'); ?>
+            <input type="hidden" name="name" value="<?php echo $row['name'];?>">
+            <input type="hidden" name="id" value="<?php echo $row['id'];?>">
+            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal">View Photos</button>
+        </form>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 
         <button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#myModal<?php echo $row['id'] ?>">Delete</button>
         </div>

@@ -34,7 +34,7 @@ header("Pragma: no-cache");
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div><span style="color:#F24B4B;"><?php echo validation_errors(); ?></span></div>
       <?php if(isset($message)) echo $message; ?>
-      <?php echo form_open('property/addProperty'); ?>
+      <?php echo form_open_multipart('property/addProperty'); ?>
         <h2 align="center">Add Property</h2>
         <div class="form-body">
 
@@ -50,6 +50,9 @@ header("Pragma: no-cache");
 
                     <label for="url" style="margin-top:0.4em">Url: <span style="color:#F24B4B;">*</span></label>
                     <input type="text" class="form-control" id="url" name="url" value="<?php echo set_value('url')?>" placeholder="Enter Url: http://example.com" required>
+
+                    <label for="upload_url" style="margin-top:0.4em">Photo Upload Folder Name: <span style="color:#F24B4B;">*</span></label>
+                    <input type="text" class="form-control" id="upload_url" name="upload_url" value="<?php echo set_value('upload_url')?>" placeholder="Folder name" required>
                 </div>
             </div>
 
@@ -156,9 +159,33 @@ header("Pragma: no-cache");
 
             </fieldset>
         </div>
+    
+        <div class="form-group">
+            <fieldset>
+            <legend style="color: #1489a6; margin-top:0.6em;">Upload Photos:</legend>
+            <?php
+                if(isset($photo_name))
+                {
+                    $max=sizeof($photo_name);
+
+                }
+
+            ?>
+                <?php
+                 if(isset($max)){
+                 for($i=0;$i<$max;$i++){?>
+                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top:0.4em;">
+                 <a href="<?php echo $photo_url.'/'.$photo_name[$i]; ?>" ><img src="<?php echo $photo_url.'/'.$photo_name[$i]; ?>" class="img-responsive" height="200" width="300"></a>
+
+                 </div>
+                <?php }}  ?>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:-0.6em;">
+                    <input name="userfile[]" id="userfile" type="file" multiple="" required/>
+            </fieldset>
+        </div>
         <div class="footerForm">
             <div align="center">
-              <button type="submit" name="submit" id="submit" class="btn btn-success">Add</button>
+              <button type="submit" value="Submit" class="btn btn-success">Add</button>
               <button type="reset" class="btn btn-primary">Reset</button>
             </div>
         </div>

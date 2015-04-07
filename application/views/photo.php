@@ -38,6 +38,7 @@ header("Pragma: no-cache");
 <div class="container" style="padding-top: 60px;">
     <div class="row formationaddtable" style="min-height:50em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h3>View/Upload Photo for <span style="color: #1489a6;"><?php echo $name; ?></span></h3>
             <?php
                 if(isset($photo_name))
                 {
