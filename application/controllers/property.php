@@ -513,6 +513,11 @@ class property extends CI_Controller{
             $data['businessDescription'] = $this->input->post('businessDescription');
             $data['sportsDescription'] = $this->input->post('sportsDescription');
 
+            $map['latitude'] = $this->input->post('latitude');
+            $map['longitude'] = $this->input->post('longitude');
+
+            $data['map'] = json_encode($map);
+
             $check = $this->propertymodel->insertData($data);
             $checkpic=$this->photoAdd();
 
