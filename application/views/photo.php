@@ -66,7 +66,7 @@ header("Pragma: no-cache");
             <?php echo form_open_multipart('property/photoUpload');?>
                 <input name="userfile[]" id="userfile" type="file" multiple="" />
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" class="btn btn-success">
             </form>
                 </div>
         </div>
