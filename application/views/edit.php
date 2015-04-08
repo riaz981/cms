@@ -42,15 +42,15 @@ header("Pragma: no-cache");
 
             <div class="form-group">
             <fieldset>
-                <legend style="color: #1489a6;">Name, Address &amp Url:</legend>
+                <legend class="headings">Name, Address &amp Url:</legend>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <label for="name">Property Name: <span style="color:#F24B4B;">*</span></label>
+                    <label for="name">Property Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>" placeholder="Enter property name" required>
 
-                    <label for="address" style="margin-top:0.4em;">Address: <span style="color:#F24B4B;">*</span></label>
+                    <label for="address" style="margin-top:0.4em;">Address: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="address" name="address" value="<?php echo $address;?>" placeholder="Enter address" required>
 
-                    <label for="url" style="margin-top:0.4em">Url: <span style="color:#F24B4B;">*</span></label>
+                    <label for="url" style="margin-top:0.4em">Url: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="url" name="url" value="<?php echo $url;?>" placeholder="Enter Url: http://example.com" required>
 
                 </div>
@@ -59,25 +59,25 @@ header("Pragma: no-cache");
 
             <div class="form-group">
                 <fieldset>
-                    <legend style="color: #1489a6;">Icon informations:</legend>
+                    <legend class="headings">Icon informations:</legend>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="typeProperty">Type: <span style="color:#F24B4B;">*</span></label>
+                        <label for="typeProperty">Type: <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="typeProperty" name="typeProperty" value="<?php echo $typeProperty;?>" placeholder="Whole house/Just rooms" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="guestNumber">Number of Guests: <span style="color:#F24B4B;">*</span></label>
+                        <label for="guestNumber">Number of Guests: <span class="spanColor">*</span></label>
                         <input type="number" class="form-control" id="guestNumber" name="guestNumber" placeholder="Number of Guests" value="<?php echo $guestNumber;?>" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="bedroomNumber">Number of Bedrooms: <span style="color:#F24B4B;">*</span></label>
+                        <label for="bedroomNumber">Number of Bedrooms: <span class="spanColor">*</span></label>
                         <input type="number" class="form-control" id="bedroomNumber" name="bedroomNumber" placeholder="Number of Bedrooms" value="<?php echo $bedroomNumber;?>" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="bedsNumber">Number of Beds: <span style="color:#F24B4B;">*</span></label>
+                        <label for="bedsNumber">Number of Beds: <span class="spanColor">*</span></label>
                         <input type="number" class="form-control" id="bedsNumber" name="bedsNumber" placeholder="Number of Beds" value="<?php echo $bedsNumber;?>" required>
                     </div>
                     <div class="col-lg-12 col-lg-12 col-lg-12 col-xs-12" style="margin-top:0.4em;">
-                        <label for="minimumStay">Minimum Stay: (Nights) <span style="color:#F24B4B;">*</span></label>
+                        <label for="minimumStay">Minimum Stay: (Nights) <span class="spanColor">*</span></label>
                         <input type="number" class="form-control" id="minimumStay" name="minimumStay" placeholder="Minimum Stay" value="<?php echo $minimumStay;?>" required>
                     </div>
                 </fieldset>
@@ -85,74 +85,74 @@ header("Pragma: no-cache");
 
             <div class="form-group">
                 <fieldset>
-                <legend style="color: #1489a6;">Rates:</legend>
+                <legend class="headings">Rates:</legend>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="nightlyRate">Nightly Price: A$ <span style="color:#F24B4B;">*</span></label>
+                        <label for="nightlyRate">Nightly Price: A$ <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="nightlyRate" name="nightlyRate" value="<?php echo $nightlyRate;?>" placeholder="Nightly Price" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="weeklyRate">Weekly Price: A$ <span style="color:#F24B4B;">*</span></label>
+                        <label for="weeklyRate">Weekly Price: A$ <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="weeklyRate" name="weeklyRate" value="<?php echo $weeklyRate;?>" placeholder="Weekly Price" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="monthlyRate">Monthly Price: A$ <span style="color:#F24B4B;">*</span></label>
+                        <label for="monthlyRate">Monthly Price: A$ <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="monthlyRate" name="monthlyRate" value="<?php echo $monthlyRate;?>" placeholder="Monthly Price" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="cleaningRate">Cleaning Fee: A$ <span style="color:#F24B4B;">*</span></label>
+                        <label for="cleaningRate">Cleaning Fee: A$ <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="cleaningRate" name="cleaningRate" value="<?php echo $cleaningRate;?>" placeholder="Cleaning Fee" required>
                     </div>
                 </fieldset>
             </div>
 
             <div class="form-group">
-                <label for="overview"><h4 style="color: #1489a6;">Overview: <span style="color:#F24B4B;">*</span></h4></label>
+                <label for="overview"><h4 style="color: #1489a6; margin-top:0.6em;">Overview: <span class="spanColor">*</span></h4></label>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <textarea class="form-control" id="overview" name="overview" placeholder="Property Overview" rows="5" required><?php echo $overview;?></textarea>
                 </div>
             </div>
 
             <fieldset>
-            <legend style="color: #1489a6; margin-top:0.6em;">Specifications:</legend>
+            <legend class="headings">Specifications:</legend>
                 <div class="form-group">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="dining">Dining: <span style="color:#F24B4B;">*</span></label>
+                        <label for="dining">Dining: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="dining" name="dining" placeholder="Dining" rows="3" required><?php echo $dining;?></textarea>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="bathroomDescription">Bathroom Description: <span style="color:#F24B4B;">*</span></label>
+                        <label for="bathroomDescription">Bathroom Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="bathroomDescription" name="bathroomDescription" placeholder="Bathroom Description" rows="3" required><?php echo $bathroomDescription;?></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="bedroomDescription">Bedroom Description: <span style="color:#F24B4B;">*</span></label>
+                        <label for="bedroomDescription">Bedroom Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="bedroomDescription" name="bedroomDescription" placeholder="Bedroom Description" rows="3" required><?php echo $bedroomDescription;?></textarea>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="attractionDescription">Attractions Description: <span style="color:#F24B4B;">*</span></label>
+                        <label for="attractionDescription">Attractions Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="attractionDescription" name="attractionDescription" placeholder="Attractions Description" rows="3" required><?php echo $attractionDescription;?></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="leisureDescription">Leisure Activity Description: <span style="color:#F24B4B;">*</span></label>
+                        <label for="leisureDescription">Leisure Activity Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="leisureDescription" name="leisureDescription" placeholder="Leisure Activity Description" rows="3" required><?php echo $leisureDescription;?></textarea>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="businessDescription">Local Services &amp Businesses Description: <span style="color:#F24B4B;">*</span></label>
+                        <label for="businessDescription">Local Services &amp Businesses Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="businessDescription" name="businessDescription" placeholder="Local Service and Businesses Description" rows="3" required><?php echo $businessDescription; ?></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:0.4em;">
-                        <label for="sportsDescription">Sports Adventures Activity Description: <span style="color:#F24B4B;">*</span></label>
+                        <label for="sportsDescription">Sports Adventures Activity Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="sportsDescription" name="sportsDescription" placeholder="Sports Adventures Activity Description" rows="3" required><?php echo $sportsDescription;?></textarea>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ header("Pragma: no-cache");
             </fieldset>
             <div class="form-group">
                 <fieldset>
-                <legend style="color: #1489a6; margin-top:0.6em;">Photos: (To upload photos go back to home page)</legend>
+                <legend class="headings">Photos: (To upload photos go back to home page)</legend>
                     <?php
                         if(isset($photo_name))
                         {
@@ -182,7 +182,7 @@ header("Pragma: no-cache");
 
             <div class="form-group">
                 <fieldset>
-                    <legend style="color: #1489a6; margin-top:0.6em;">Map: </legend>
+                    <legend class="headings">Map: </legend>
 
                     <script src="http://maps.googleapis.com/maps/api/js"></script>
 
@@ -215,11 +215,11 @@ header("Pragma: no-cache");
                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="googleMap"></div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="latitude">Latitude: <span style="color:#F24B4B;">*</span></label>
+                        <label for="latitude">Latitude: <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="latitude" name="latitude" value="<?php echo $latitude; ?>" placeholder="Latitude" required>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="longitude">Longitude: <span style="color:#F24B4B;">*</span></label>
+                        <label for="longitude">Longitude: <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="longitude" name="longitude" value="<?php echo $longitude; ?>" placeholder="Longitude" required>
                     </div>
                 </fieldset>
