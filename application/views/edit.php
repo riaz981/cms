@@ -47,10 +47,10 @@ header("Pragma: no-cache");
                     <label for="name">Property Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>" placeholder="Enter property name" required>
 
-                    <label for="address" style="margin-top:0.4em;">Address: <span class="spanColor">*</span></label>
+                    <label for="address" class="labelInput">Address: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="address" name="address" value="<?php echo $address;?>" placeholder="Enter address" required>
 
-                    <label for="url" style="margin-top:0.4em">Url: <span class="spanColor">*</span></label>
+                    <label for="url" class="labelInput">Url: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="url" name="url" value="<?php echo $url;?>" placeholder="Enter Url: http://example.com" required>
 
                 </div>
@@ -68,15 +68,15 @@ header("Pragma: no-cache");
                         <label for="guestNumber">Number of Guests: <span class="spanColor">*</span></label>
                         <input type="number" class="form-control" id="guestNumber" name="guestNumber" placeholder="Number of Guests" value="<?php echo $guestNumber;?>" required>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="bedroomNumber">Number of Bedrooms: <span class="spanColor">*</span></label>
                         <input type="number" class="form-control" id="bedroomNumber" name="bedroomNumber" placeholder="Number of Bedrooms" value="<?php echo $bedroomNumber;?>" required>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="bedsNumber">Number of Beds: <span class="spanColor">*</span></label>
                         <input type="number" class="form-control" id="bedsNumber" name="bedsNumber" placeholder="Number of Beds" value="<?php echo $bedsNumber;?>" required>
                     </div>
-                    <div class="col-lg-12 col-lg-12 col-lg-12 col-xs-12" style="margin-top:0.4em;">
+                    <div class="col-lg-12 col-lg-12 col-lg-12 col-xs-12 labelInput">
                         <label for="minimumStay">Minimum Stay: (Nights) <span class="spanColor">*</span></label>
                         <input type="number" class="form-control" id="minimumStay" name="minimumStay" placeholder="Minimum Stay" value="<?php echo $minimumStay;?>" required>
                     </div>
@@ -94,11 +94,11 @@ header("Pragma: no-cache");
                         <label for="weeklyRate">Weekly Price: A$ <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="weeklyRate" name="weeklyRate" value="<?php echo $weeklyRate;?>" placeholder="Weekly Price" required>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="monthlyRate">Monthly Price: A$ <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="monthlyRate" name="monthlyRate" value="<?php echo $monthlyRate;?>" placeholder="Monthly Price" required>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="cleaningRate">Cleaning Fee: A$ <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="cleaningRate" name="cleaningRate" value="<?php echo $cleaningRate;?>" placeholder="Cleaning Fee" required>
                     </div>
@@ -127,31 +127,31 @@ header("Pragma: no-cache");
                 </div>
 
                 <div class="form-group">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="bedroomDescription">Bedroom Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="bedroomDescription" name="bedroomDescription" placeholder="Bedroom Description" rows="3" required><?php echo $bedroomDescription;?></textarea>
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="attractionDescription">Attractions Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="attractionDescription" name="attractionDescription" placeholder="Attractions Description" rows="3" required><?php echo $attractionDescription;?></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="leisureDescription">Leisure Activity Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="leisureDescription" name="leisureDescription" placeholder="Leisure Activity Description" rows="3" required><?php echo $leisureDescription;?></textarea>
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="businessDescription">Local Services &amp Businesses Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="businessDescription" name="businessDescription" placeholder="Local Service and Businesses Description" rows="3" required><?php echo $businessDescription; ?></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:0.4em;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 labelInput">
                         <label for="sportsDescription">Sports Adventures Activity Description: <span class="spanColor">*</span></label>
                         <textarea class="form-control" id="sportsDescription" name="sportsDescription" placeholder="Sports Adventures Activity Description" rows="3" required><?php echo $sportsDescription;?></textarea>
                     </div>
@@ -172,7 +172,7 @@ header("Pragma: no-cache");
                         <?php
                          if(isset($max)){
                          for($i=0;$i<$max;$i++){?>
-                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top:0.4em;">
+                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 labelInput">
                          <a href="<?php echo $photo_url.'/'.$photo_name[$i]; ?>" ><img src="<?php echo $photo_url.'/'.$photo_name[$i]; ?>" class="img-responsive" height="200" width="300"></a>
 
                          </div>
@@ -214,11 +214,11 @@ header("Pragma: no-cache");
 
                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="googleMap"></div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="latitude">Latitude: <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="latitude" name="latitude" value="<?php echo $latitude; ?>" placeholder="Latitude" required>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="longitude">Longitude: <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="longitude" name="longitude" value="<?php echo $longitude; ?>" placeholder="Longitude" required>
                     </div>
