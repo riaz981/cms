@@ -40,7 +40,7 @@ header("Pragma: no-cache");
 
             <div class="form-group">
             <fieldset>
-                <legend style="color: #1489a6;">Name, Address &amp Url:</legend>
+                <legend class="headings">Name, Address &amp Url:</legend>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label for="name">Property Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name')?>" placeholder="Enter property name" required>
@@ -59,7 +59,7 @@ header("Pragma: no-cache");
 
             <div class="form-group">
                 <fieldset>
-                    <legend style="color: #1489a6;">Icon informations:</legend>
+                    <legend class="headings">Icon informations:</legend>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <label for="typeProperty">Type: <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="typeProperty" name="typeProperty" value="<?php echo set_value('typeProperty')?>" placeholder="Whole house/Just rooms" required>
@@ -85,7 +85,7 @@ header("Pragma: no-cache");
 
             <div class="form-group">
                 <fieldset>
-                <legend style="color: #1489a6;">Rates:</legend>
+                <legend class="headings">Rates:</legend>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <label for="nightlyRate">Nightly Price: A$ <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="nightlyRate" name="nightlyRate" value="<?php echo set_value('nightlyRate')?>" placeholder="Nightly Price" required>
@@ -106,14 +106,14 @@ header("Pragma: no-cache");
             </div>
 
             <div class="form-group">
-                <label for="overview"><h4 style="color: #1489a6;">Overview: <span class="spanColor">*</span></h4></label>
+                <label for="overview"><h4 class="headings" style="font-size:20px;">Overview: <span class="spanColor">*</span></h4></label>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <textarea class="form-control" id="overview" name="overview" value="<?php echo set_value('overview')?>" placeholder="Property Overview" rows="5" required></textarea>
                 </div>
             </div>
 
             <fieldset>
-            <legend style="color: #1489a6; margin-top:0.6em;">Specifications:</legend>
+            <legend class="headings">Specifications:</legend>
                 <div class="form-group">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                         <label for="dining">Dining: <span class="spanColor">*</span></label>
@@ -162,7 +162,7 @@ header("Pragma: no-cache");
 
         <div class="form-group">
             <fieldset>
-            <legend style="color: #1489a6; margin-top:0.6em;">Upload Photos:</legend>
+            <legend class="headings">Upload Photos:</legend>
             <?php
                 if(isset($photo_name))
                 {
@@ -183,6 +183,52 @@ header("Pragma: no-cache");
                     <input name="userfile[]" id="userfile" type="file" multiple="" required/>
             </fieldset>
         </div>
+
+        <div class="form-group">
+            <fieldset>
+                <legend class="headings">Map: </legend>
+
+                <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+                <script>
+
+                    function initialize() {
+
+                      var latitude = undefined;
+                      var longitude = undefined;
+
+                      latitude = document.getElementById("latitude").value;
+                      longitude = document.getElementById("longitude").value;
+
+                      var mapProp = {
+                        center:new google.maps.LatLng(latitude,longitude),
+                        zoom:15,
+                        mapTypeId:google.maps.MapTypeId.ROADMAP
+                      };
+                      var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                      var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(latitude,longitude),
+                            map: map
+                        });
+                    }
+                    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+                </script>
+
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="googleMap"></div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
+                    <label for="latitude">Latitude: <span class="spanColor">*</span></label>
+                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude" required>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
+                    <label for="longitude">Longitude: <span class="spanColor">*</span></label>
+                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude" required>
+                </div>
+            </fieldset>
+        </div>
+
         <div class="footerForm">
             <div align="center">
               <button type="submit" value="Submit" class="btn btn-success">Add</button>
