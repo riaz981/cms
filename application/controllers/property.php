@@ -198,7 +198,7 @@ class property extends CI_Controller{
         $this->load->library('upload', $config);
 
         if($this->upload->do_upload()){
-            //echo "Image ".$_FILES['userfile']['name']." was successfully added!"."<br>";
+
             $config = $this->imageConfig($_FILES['userfile']['name']);
             $this->load->library('image_lib', $config);
             $this->image_lib->initialize($config);
@@ -218,7 +218,6 @@ class property extends CI_Controller{
     public function photoAdd(){
 
           $count = count($_FILES['userfile']['name']);
-          //echo $count;
 
           $name = $this->input->post('name');
 
@@ -235,12 +234,11 @@ class property extends CI_Controller{
               $this->load->library('upload', $config);
 
               if($this->upload->do_upload()){
-                  //echo "Image ".$_FILES['userfile']['name']." was successfully added!"."<br>";
+
                   $config = $this->imageConfigAdd($_FILES['userfile']['name'],$name);
                   $this->load->library('image_lib', $config);
                   $this->image_lib->initialize($config);
                   $this->image_lib->resize();
-                  //echo $_FILES['userfile']['name'];
 
                   $this->insertImageAdd($_FILES['userfile']['name'],$name);
               }
@@ -309,7 +307,7 @@ class property extends CI_Controller{
         }
 
         $url = $this->propertymodel->getUploadUrlById($id);
-        echo $url;
+
         $config['upload_path'] = $url;
         $config['allowed_types'] = 'jpg';
         $config['max_size']	= '0';
@@ -372,7 +370,7 @@ class property extends CI_Controller{
 
         $url = $this->propertymodel->getUploadUrlById($id);
         $sourceImage = $url.$name;
-        //echo $sourceImage;
+
         $config['image_library'] = 'gd2';
         $config['source_image'] = $sourceImage;
         $config['create_thumb'] = FALSE;
@@ -387,7 +385,7 @@ class property extends CI_Controller{
         $id = $this->input->post('id');
         $url = $this->propertymodel->getUploadUrlById($id);
         $sourceImage = $url.$name;
-        //echo $sourceImage;
+
         $config['image_library'] = 'gd2';
         $config['source_image'] = $sourceImage;
         $config['create_thumb'] = FALSE;
