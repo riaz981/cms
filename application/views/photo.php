@@ -35,7 +35,14 @@ header("Pragma: no-cache");
 </div>
 </nav> <!-- main navbar closes -->
 
-<div class="container" style="padding-top: 60px;">
+<div style="margin-top:3em;">
+<ol class="breadcrumb" style="background-color:#E4E0E0;">
+  <li><a href="home">Home</a></li><span> / </span>
+  <li class="active">Add Photo</li>
+</ol>
+</div>
+
+<div class="container" style="margin-top:-2em;">
     <div class="row formationaddtable" style="min-height:50em;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3>View/Upload Photo for <span style="color: #1489a6; text-decoration:underline;"><?php echo $name; ?></span></h3>
