@@ -106,7 +106,7 @@ header("Pragma: no-cache");
             </div>
 
             <div class="form-group">
-                <label for="overview"><h4 style="color: #1489a6; margin-top:0.6em;">Overview: <span class="spanColor">*</span></h4></label>
+                <label for="overview"><h4 class="headings" style="font-size:20px;">Overview: <span class="spanColor">*</span></h4></label>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <textarea class="form-control" id="overview" name="overview" placeholder="Property Overview" rows="5" required><?php echo $overview;?></textarea>
                 </div>
