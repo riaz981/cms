@@ -220,11 +220,11 @@ header("Pragma: no-cache");
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                     <label for="latitude">Latitude: <span class="spanColor">*</span></label>
-                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Latitude" required>
+                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Eg. -33.790706" required>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                     <label for="longitude">Longitude: <span class="spanColor">*</span></label>
-                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Longitude" required>
+                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Eg. 151.085582" required>
                 </div>
             </fieldset>
         </div>
