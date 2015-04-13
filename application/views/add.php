@@ -183,7 +183,7 @@ header("Pragma: no-cache");
                     <input name="userfile[]" id="userfile" type="file" multiple="" required/>
             </fieldset>
         </div>
-
+    
         <div class="form-group">
             <fieldset>
                 <legend class="headings">Map: </legend>
