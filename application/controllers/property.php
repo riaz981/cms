@@ -6,7 +6,6 @@ public function __construct(){
     parent::__construct();
     $this->load->helper('url');
     $this->load->model('propertymodel');
-
 }
 
 //Log-in Page
@@ -20,7 +19,6 @@ public function logincheck(){
     $username= $this->input->post('username');
     $password= $this->input->post('password');
 
-
     //very basic validation if front end fails
     if($username=="" || $password==""){
         $data['message'] = "Please enter username and password!";
@@ -30,7 +28,6 @@ public function logincheck(){
 
     //validation of username and password
     else{
-
         $check=$this->propertymodel->logincheck($username,$password);
 
         //if username and password is correct
@@ -43,23 +40,19 @@ public function logincheck(){
 
         //if username and password incorrect
         else{
-
             $data['message']="Invalid username or password. Please try again!";
             $this->load->helper(array('form'));
             $this->load->view('login',$data);
         }
-
     }
 }
 
 //this is for the navigation link that goes to add page
 public function add(){
-
     if($this->session->userdata('validated')){
         $this->load->helper(array('form'));
         $this->load->view('add');
     }
-
     else{
         $data['message']="Invalid username or password. Please try again!";
         $this->load->helper(array('form'));
@@ -70,11 +63,8 @@ public function add(){
 //this is for the navigation link that goes to edit page
 //gets all data from database specific to the id.
 public function edit(){
-
     if($this->session->userdata('validated')){
-
         $id = $this->input->post('id');
-
         $queryPhoto= $this->propertymodel->getAllPicById($id);
         $photo_names = $this->propertymodel->getPicNameById($id);
         $data['photo_name'] = json_decode($photo_names);
@@ -83,11 +73,7 @@ public function edit(){
             $photo['photo_url']=$row->photo_url;
             $data['photo_url'] = $photo['photo_url'];
         }
-
-
         $query = $this->propertymodel->getById($id);
-
-
 
         foreach ($query as $row){
             $data['name'] = $row->name;
@@ -121,14 +107,10 @@ public function edit(){
             $map = json_decode($row->map);
             $data['latitude'] = $map->latitude;
             $data['longitude'] = $map->longitude;
-
-
         }
-
         $this->load->helper(array('form'));
         $this->load->view('edit',$data);
     }
-
     else{
         $data['message']="Invalid username or password. Please try again!";
         $this->load->helper(array('form'));
@@ -138,16 +120,12 @@ public function edit(){
 
 //link for home page
 public function home(){
-
     if($this->session->userdata('validated')){
-
         $data=$this->getEverything();
         $this->load->helper(array('form'));
         $this->load->view('home',$data);
     }
-
     else{
-
         $data['message']="Invalid username or password. Please try again!";
         $this->load->helper(array('form'));
         $this->load->view('login',$data);
@@ -155,7 +133,6 @@ public function home(){
 }
 
 public function photo(){
-
     if($this->session->userdata('validated')){
         $id=$this->input->post('id');
         $name=$this->input->post('name');
@@ -171,9 +148,7 @@ public function photo(){
         $this->load->helper(array('form'));
         $this->load->view('photo',$data);
     }
-
     else{
-
         $data['message']="Invalid username or password. Please try again!";
         $this->load->helper(array('form'));
         $this->load->view('login',$data);
@@ -181,7 +156,6 @@ public function photo(){
 }
 
 public function photoUpload(){
-
     $count = count($_FILES['userfile']['name']);
     $id=$this->input->post('id');
     $files = $_FILES;
@@ -193,30 +167,23 @@ public function photoUpload(){
         $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
 
         $config = $this->configEdit();
-
         $this->load->library('upload', $config);
 
         if($this->upload->do_upload()){
-
             $config = $this->imageConfig($_FILES['userfile']['name']);
             $this->load->library('image_lib', $config);
             $this->image_lib->initialize($config);
             $this->image_lib->resize();
-
             $this->insertImage($_FILES['userfile']['name']);
         }
         else
             echo "Alas!";
-
     }
-
     $this->photo();
 }
 
 public function photoAdd(){
-
     $count = count($_FILES['userfile']['name']);
-
     $name = $this->input->post('name');
     $this->load->library('image_lib');
 
@@ -234,7 +201,6 @@ public function photoAdd(){
             $this->load->library('upload', $config);
             if($this->upload->do_upload()){
                 $config = $this->imageConfigAdd($_FILES['userfile']['name'],$name);
-
                 $this->image_lib->initialize($config);
                 if ( ! $this->image_lib->resize())
                 {
@@ -243,16 +209,13 @@ public function photoAdd(){
                 else
                     $this->insertImageAdd($_FILES['userfile']['name'],$name);
             }
-
         else
             echo "Alas!";
-
         }
 
     $this->image_lib->clear();
 
     $queryId = $this->propertymodel->getIdByName($name);
-
     $query= $this->propertymodel->getAllPicById($queryId);
     $photo_names = $this->propertymodel->getPicNameById($queryId);
     $data['photo_name'] = json_decode($photo_names);
@@ -334,15 +297,12 @@ public function insertImageAdd($name,$recordName){
         $i = 0;
         $photo[$i] = $name;
         $data['photo_name'] = json_encode($photo);
-
         $this->propertymodel->propertymodel->uploadPicById($id,$data);
     }
 
 
     else{
-
         $pictures = json_decode($photo_names);
-
         $i=0;
         foreach($pictures as $photos){
             $photo[$i] = $photos;
@@ -351,15 +311,12 @@ public function insertImageAdd($name,$recordName){
         $count = count($photo);
         $photo[$count] = $name;
         $data['photo_name'] = json_encode($photo);
-
         $this->propertymodel->propertymodel->uploadPicById($id,$data);
     }
 }
 
 public function imageConfigAdd($name,$recordName){
-
     $query=$this->propertymodel->getSpecific($recordName);
-
     $i=0;
     if(isset($query)){
         foreach ($query as $row){
@@ -380,11 +337,9 @@ public function imageConfigAdd($name,$recordName){
 }
 
 public function imageConfig($name){
-
     $id = $this->input->post('id');
     $url = $this->propertymodel->getUploadUrlById($id);
     $sourceImage = $url.$name;
-
     $config['image_library'] = 'gd2';
     $config['source_image'] = $sourceImage;
     $config['create_thumb'] = FALSE;
@@ -410,14 +365,12 @@ public function getEverything(){
         $data['property'][$i]['url'] = $row->url;
         $i++;
     }
-
     return $data;
 }
 
 public function deleteProperty(){
     $id = $this->input->post('id');
     $path= $this->propertymodel->getUploadUrlById($id);
-
     if (! is_dir($path)) {
         throw new InvalidArgumentException("$dirPath must be a directory");
     }
@@ -434,16 +387,13 @@ public function deleteProperty(){
         }
     }
     rmdir($path);
-
     $check = $this->propertymodel->deleteRecord($id);
     if($check){
-
         $data=$this->getEverything();
         $data['message']="deleted";
         $this->load->helper(array('form'));
         $this->load->view('home',$data);
     }
-
     else{
         $data=$this->getEverything();
         $data['message']="undeleted";
@@ -459,7 +409,6 @@ passes $data to the model's function.
 */
 
 public function addProperty(){
-
     $this->load->helper(array('form'));
     $this->load->library('form_validation');
 
@@ -630,7 +579,6 @@ public function editProperty(){
 
         $map['latitude'] = $this->input->post('latitude');
         $map['longitude']= $this->input->post('longitude');
-
         $data['map'] = json_encode($map);
 
         $check = $this->propertymodel->updateById($data,$id);
@@ -648,14 +596,10 @@ public function editProperty(){
             $this->load->helper(array('form'));
             $this->load->view('home',$data);
         }
-
-
     }
-
 }
 
 public function search(){
-
     $this->load->helper(array('form'));
     $name = $this->input->post('search');
     $name = strtolower($name);
@@ -679,11 +623,9 @@ public function search(){
         $error['message']="nope";
         $this->load->view('home',$error);
     }
-
 }
 
 public function logout(){
-
     $this->session->sess_destroy();
     $data['message']="You have been logged out! Please log in.";
     $this->load->helper(array('form'));
