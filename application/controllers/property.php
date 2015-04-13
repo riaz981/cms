@@ -231,7 +231,6 @@ public function photoAdd(){
 }
 
 public function insertImage($name){
-
     $id=$this->input->post('id');
     $photo_names = $this->propertymodel->getPicNameById($id);
     $pictures = json_decode($photo_names);
@@ -260,9 +259,7 @@ public function configEdit(){
 }
 
 public function configEditAdd($name){
-
     $query=$this->propertymodel->getSpecific($name);
-
     $i=0;
     if(isset($query)){
         foreach ($query as $row){
@@ -270,7 +267,6 @@ public function configEditAdd($name){
             $i++;
         }
     }
-
     $url = $this->propertymodel->getUploadUrlById($id);
 
     $config['upload_path'] = $url;
@@ -282,9 +278,7 @@ public function configEditAdd($name){
 }
 
 public function insertImageAdd($name,$recordName){
-
     $query=$this->propertymodel->getSpecific($recordName);
-
     $i=0;
     if(isset($query)){
         foreach ($query as $row){
@@ -292,8 +286,6 @@ public function insertImageAdd($name,$recordName){
             $i++;
         }
     }
-
-
     $photo_names = $this->propertymodel->getPicNameById($id);
     if($photo_names == NULL){
         $i = 0;
@@ -301,8 +293,6 @@ public function insertImageAdd($name,$recordName){
         $data['photo_name'] = json_encode($photo);
         $this->propertymodel->propertymodel->uploadPicById($id,$data);
     }
-
-
     else{
         $pictures = json_decode($photo_names);
         $i=0;
@@ -326,7 +316,6 @@ public function imageConfigAdd($name,$recordName){
             $i++;
         }
     }
-
     $url = $this->propertymodel->getUploadUrlById($id);
     $sourceImage = $url.$name;
     $config['image_library'] = 'gd2';
@@ -440,7 +429,6 @@ public function addProperty(){
     if($this->form_validation->run()==FALSE){
         $this->load->view('add');
     }
-
     //else call the model function to insert data
     else{
         $data['name'] = $this->input->post('name');
@@ -490,7 +478,6 @@ public function addProperty(){
 
         $check = $this->propertymodel->insertData($data);
         $checkpic=$this->photoAdd();
-
         if($checkpic & $check){
 
             $data = $this->getEverything();
@@ -504,10 +491,7 @@ public function addProperty(){
             $this->load->helper(array('form'));
             $this->load->view('home',$data);
         }
-
-
     }
-
 }
 
 /*
@@ -539,14 +523,12 @@ public function editProperty(){
     $this->form_validation->set_rules('businessDescription','Business Description', 'required');
     $this->form_validation->set_rules('sportsDescription','Sports Description','required');
 
-
     //if there is any validation failure redirect
     //back to home.
     if($this->form_validation->run()==FALSE){
         $data['message'] = "fail edit";
         $this->load->view('home',$data);
     }
-
     //else call the model function to insert data
     else{
         $id = $this->input->post('id');
@@ -584,7 +566,6 @@ public function editProperty(){
         $data['map'] = json_encode($map);
 
         $check = $this->propertymodel->updateById($data,$id);
-
         if($check){
 
             $data = $this->getEverything();
@@ -616,7 +597,6 @@ public function search(){
             $i++;
         }
     }
-
     $this->load->helper(array('form'));
     if(isset($data))
         $this->load->view('home',$data);
