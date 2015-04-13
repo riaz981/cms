@@ -220,6 +220,8 @@ class property extends CI_Controller{
           $count = count($_FILES['userfile']['name']);
 
           $name = $this->input->post('name');
+          $this->load->library('image_lib');
+
 
           $files = $_FILES;
           for($i=0;$i<$count;$i++){
@@ -231,21 +233,26 @@ class property extends CI_Controller{
 
               $config = $this->configEditAdd($name);
 
-              $this->load->library('upload', $config);
 
+              $this->load->library('upload', $config);
               if($this->upload->do_upload()){
 
                   $config = $this->imageConfigAdd($_FILES['userfile']['name'],$name);
-                  $this->load->library('image_lib', $config);
-                  $this->image_lib->initialize($config);
-                  $this->image_lib->resize();
 
-                  $this->insertImageAdd($_FILES['userfile']['name'],$name);
+                  $this->image_lib->initialize($config);
+                  if ( ! $this->image_lib->resize())
+                  {
+                    echo $this->image_lib->display_errors();
+                  }
+                  else
+                    $this->insertImageAdd($_FILES['userfile']['name'],$name);
               }
                   else
                       echo "Alas!";
 
                 }
+
+                $this->image_lib->clear();
 
               $queryId = $this->propertymodel->getIdByName($name);
 
@@ -370,7 +377,6 @@ class property extends CI_Controller{
 
         $url = $this->propertymodel->getUploadUrlById($id);
         $sourceImage = $url.$name;
-
         $config['image_library'] = 'gd2';
         $config['source_image'] = $sourceImage;
         $config['create_thumb'] = FALSE;
@@ -417,6 +423,25 @@ class property extends CI_Controller{
 
   public function deleteProperty(){
       $id = $this->input->post('id');
+      $path= $this->propertymodel->getUploadUrlById($id);
+
+      if (! is_dir($path)) {
+        throw new InvalidArgumentException("$dirPath must be a directory");
+      }
+      if (substr($path, strlen($path) - 1, 1) != '/') {
+        $path .= '/';
+       }
+      $files = glob($path . '*', GLOB_MARK);
+      foreach ($files as $file) {
+          if (is_dir($file)) {
+                self::deleteDir($file);
+            }
+          else {
+                unlink($file);
+          }
+       }
+      rmdir($path);
+
       $check = $this->propertymodel->deleteRecord($id);
       if($check){
 
@@ -478,7 +503,7 @@ class property extends CI_Controller{
             $oldmask = umask(0);
             $photoUrl = "/var/www/html/apartmentclub/wp-content/themes/accesspress-ray/images/demo/";
             $data['upload_url'] = strtolower($this->input->post('upload_url'));
-            $data['upload_url'] = $photoUrl.$data['upload_url'];
+            $data['upload_url'] = $photoUrl.$data['upload_url']."/";
 
             $foldername = strtolower($this->input->post('upload_url'));
             $data['photo_url'] = "http://apartmentclub.localhost/wp-content/themes/accesspress-ray/images/demo/".$foldername;
