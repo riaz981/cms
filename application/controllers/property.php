@@ -8,13 +8,13 @@ public function __construct(){
     $this->load->model('propertymodel');
 }
 
-//Log-in Page
+/* Log-in Page */
 public function index(){
     $this->load->helper(array('form'));
     $this->load->view('login');
 }
 
-//Checking the credentials of initial log in page
+/* Checking the credentials of initial log in page */
 public function logincheck(){
     $username= $this->input->post('username');
     $password= $this->input->post('password');
@@ -47,7 +47,7 @@ public function logincheck(){
     }
 }
 
-//this is for the navigation link that goes to add page
+/* This is for the navigation link that goes to add page */
 public function add(){
     if($this->session->userdata('validated')){
         $this->load->helper(array('form'));
@@ -60,8 +60,10 @@ public function add(){
     }
 }
 
-//this is for the navigation link that goes to edit page
-//gets all data from database specific to the id.
+/*
+This is for the navigation link that goes to edit page
+gets all data from database specific to the id.
+*/
 public function edit(){
     if($this->session->userdata('validated')){
         $id = $this->input->post('id');
@@ -118,7 +120,7 @@ public function edit(){
     }
 }
 
-//link for home page
+/* Link for home page */
 public function home(){
     if($this->session->userdata('validated')){
         $data=$this->getEverything();
