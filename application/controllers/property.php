@@ -32,8 +32,6 @@ public function logincheck(){
 
         //if username and password is correct
         if($check){
-
-            //$data['message']="Welcome Admin! You can now add a property!";
             $this->load->helper(array('form'));
             $this->home();
         }
@@ -211,8 +209,8 @@ public function photoAdd(){
                 else
                     $this->insertImageAdd($_FILES['userfile']['name'],$name);
             }
-        else
-            echo "Alas!";
+            else
+                echo "Alas!";
         }
 
     $this->image_lib->clear();
@@ -398,7 +396,6 @@ Adds a property. If successful calls the property model
 property model then inserts the data in mySql.
 passes $data to the model's function.
 */
-
 public function addProperty(){
     $this->load->helper(array('form'));
     $this->load->library('form_validation');
