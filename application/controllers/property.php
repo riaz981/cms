@@ -301,7 +301,7 @@ public function insertImageAdd($name,$recordName){
         $count = count($photo);
         $photo[$count] = $name;
         $data['photo_name'] = json_encode($photo);
-        $this->propertymodel->propertymodel->uploadPicById($id,$data);
+        $this->propertymodel->uploadPicById($id,$data);
     }
 }
 
