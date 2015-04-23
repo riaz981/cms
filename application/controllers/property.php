@@ -438,7 +438,7 @@ public function addProperty(){
         $data['upload_url'] = $photoUrl.$data['upload_url']."/";
 
         $foldername = strtolower($this->input->post('upload_url'));
-        $data['photo_url'] = "http://apartmentclub.localhost/wp-content/themes/accesspress-ray/images/demo/".$foldername;
+        $data['photo_url'] = "http://apartmentclub.localhost/wp-content/themes/accesspress-ray/images/demo/".$foldername."/";
         mkdir($data['upload_url'], 0777);
         umask($oldmask);
 
