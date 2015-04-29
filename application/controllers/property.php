@@ -188,30 +188,30 @@ public function photoAdd(){
     $this->load->library('image_lib');
 
     $files = $_FILES;
-        for($i=0;$i<$count;$i++){
-            $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
-            $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
-            $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
-            $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
-            $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+    for($i=0;$i<$count;$i++){
+        $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+        $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+        $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+        $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+        $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
 
-            $config = $this->configEditAdd($name);
+        $config = $this->configEditAdd($name);
 
 
-            $this->load->library('upload', $config);
-            if($this->upload->do_upload()){
-                $config = $this->imageConfigAdd($_FILES['userfile']['name'],$name);
-                $this->image_lib->initialize($config);
-                if ( ! $this->image_lib->resize())
-                {
-                    echo $this->image_lib->display_errors();
-                }
-                else
-                    $this->insertImageAdd($_FILES['userfile']['name'],$name);
+        $this->load->library('upload', $config);
+        if($this->upload->do_upload()){
+            $config = $this->imageConfigAdd($_FILES['userfile']['name'],$name);
+            $this->image_lib->initialize($config);
+            if ( ! $this->image_lib->resize())
+            {
+                echo $this->image_lib->display_errors();
             }
             else
-                echo "Alas!";
-        }
+                $this->insertImageAdd($_FILES['userfile']['name'],$name);
+            }
+        else
+            echo "Alas!";
+    }
 
     $this->image_lib->clear();
 
