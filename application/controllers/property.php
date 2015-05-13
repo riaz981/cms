@@ -462,6 +462,7 @@ public function addProperty(){
             'comment_count' => 0
         );
         $data['url'] = "http://apartmentclub.localhost/?page_id=".$postID;
+        $data['postID'] = $postID;
         $this->db->insert('wp_posts',$insertData);
 
 
@@ -516,7 +517,7 @@ public function addProperty(){
           array(
               'post_id' => $postID ,
               'meta_key' => '_menu_item_object_id' ,
-              'meta_value' => '47'
+              'meta_value' => $postID-1
           ),
           array(
               'post_id' => $postID ,
@@ -729,51 +730,6 @@ public function search(){
         $error['message']="nope";
         $this->load->view('home',$error);
     }
-}
-
-public function wordP(){
-
-
-    /*
-    $date = date('Y-m-d H:i:s');
-    echo $date;
-    $menuItemClasses="a:1:{i:0;s:0:\"\";}";
-    echo "<br>".$menuItemClasses;
-    $objectId = 0; //this will change to what the value will be in the post table
-    */
-    /*
-    $this->db->select_max('post_id');
-    $query = $this->db->get('wp_postmeta');
-    $result=array_pop($query->result());
-    $count=$result->post_id + 1;
-    //echo $count;
-
-    $data = array(
-       array(
-          'post_id' => $count,
-          'meta_key' => '_menu_item_type' ,
-          'meta_value' => 'post_type'
-       ),
-       array(
-          'post_id' => $count,
-          'meta_key' => '_menu_item_menu_item_parent' ,
-          'meta_value' => '45'
-      ),
-      array(
-         'post_id' => $count,
-         'meta_key' => '_menu_itemn_object_id'
-         'meta_value' => ''
-      )
-    );
-
-    $this->db->insert_batch('wp_postmeta',$data);
-    if($this->db->affected_rows()>0)
-        echo "Success!";
-    else
-        echo "Alas";
-
-    */
-
 }
 
 public function logout(){
