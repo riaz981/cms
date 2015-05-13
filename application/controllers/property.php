@@ -121,10 +121,10 @@ public function edit(){
 /* Link for home page */
 public function home(){
     if($this->session->userdata('validated')){
-        $this->wordP();
-        //$data=$this->getEverything();
-        //$this->load->helper(array('form'));
-        //$this->load->view('home',$data);
+        //$this->wordP();
+        $data=$this->getEverything();
+        $this->load->helper(array('form'));
+        $this->load->view('home',$data);
     }
     else{
         $data['message']="Invalid username or password. Please try again!";
@@ -404,7 +404,7 @@ public function addProperty(){
     //setting the rules for form validation.
     $this->form_validation->set_rules('name','Name','required');
     $this->form_validation->set_rules('address','Address','required');
-    $this->form_validation->set_rules('url', 'Url', 'required');
+    //$this->form_validation->set_rules('url', 'Url', 'required');
     $this->form_validation->set_rules('typeProperty','Property Type','required');
     $this->form_validation->set_rules('guestNumber', 'Number of Guests','required');
     $this->form_validation->set_rules('bedroomNumber', 'Number of Bedrooms','required');
@@ -431,7 +431,133 @@ public function addProperty(){
     else{
         $data['name'] = $this->input->post('name');
         $data['address'] = $this->input->post('address');
-        $data['url'] = $this->input->post('url');
+        $urlform=$this->input->post('url');
+        if(isset($urlform))
+            $data['url'] = $this->input->post('url');
+
+        /////////////////////Test///////////////////////////////
+
+        $this->db->select_max('ID');
+        $query = $this->db->get('wp_posts');
+        $result=array_pop($query->result());
+        $postID=$result->ID + 1;
+        $date = date('Y-m-d H:i:s');
+        $postUrl = "http://apartmentclub.localhost/?p=".$postID;
+        $insertData = array(
+            'post_author' => 1,
+            'post_date' => $date,
+            'post_content' => "",
+            'post_title' => $data['name'],
+            'post_excerpt' => "",
+            'post_status' => "publish",
+            'comment_status' => "open",
+            'ping_status' => "open",
+            'post_password' => "",
+            'post_name' => $postID,
+            'to_ping' => "",
+            'pinged' => "",
+            'post_content_filtered' => "",
+            'guid' => $postUrl,
+            'post_type' => "page",
+            'comment_count' => 0
+        );
+        $data['url'] = "http://apartmentclub.localhost/?page_id=".$postID;
+        $this->db->insert('wp_posts',$insertData);
+
+
+        $insertData = array(
+            array(
+                'post_id' => $postID ,
+                'meta_key' => '_wp_page_template' ,
+                'meta_value' => 'my-custom-page.php'
+            ),
+            array(
+                'post_id' => $postID ,
+                'meta_key' => 'accesspress_ray_sidebar_layout' ,
+                'meta_value' => 'right-sidebar'
+            )
+        );
+        $this->db->insert_batch('wp_postmeta',$insertData);
+        $postID = $postID+1;
+        $date = date('Y-m-d H:i:s');
+        $postUrl = "http://apartmentclub.localhost/?p=".$postID;
+        $insertData = array(
+            'post_author' => 1,
+            'post_date' => $date,
+            'post_content' => "",
+            'post_title' => "",
+            'post_excerpt' => "",
+            'post_status' => "publish",
+            'comment_status' => "open",
+            'ping_status' => "open",
+            'post_password' => "",
+            'post_name' => $postID,
+            'to_ping' => "",
+            'pinged' => "",
+            'post_content_filtered' => "",
+            'guid' => $postUrl,
+            'post_type' => "nav_menu_item",
+            'comment_count' => 0
+        );
+        $this->db->insert('wp_posts',$insertData);
+
+        $menuItemClasses="a:1:{i:0;s:0:\"\";}";
+        $insertData = array(
+          array(
+              'post_id' => $postID ,
+              'meta_key' => '_menu_item_type' ,
+              'meta_value' => 'post_type'
+          ),
+          array(
+              'post_id' => $postID ,
+              'meta_key' => '_menu_item_menu_item_parent' ,
+              'meta_value' => '45'
+          ),
+          array(
+              'post_id' => $postID ,
+              'meta_key' => '_menu_item_object_id' ,
+              'meta_value' => '47'
+          ),
+          array(
+              'post_id' => $postID ,
+              'meta_key' => '_menu_item_object' ,
+              'meta_value' => 'page'
+           ),
+           array(
+                'post_id' => $postID ,
+                'meta_key' => '_menu_item_target' ,
+                'meta_value' => ''
+            ),
+            array(
+                 'post_id' => $postID ,
+                 'meta_key' => '_menu_item_classes' ,
+                 'meta_value' => $menuItemClasses
+            ),
+            array(
+                'post_id' => $postID ,
+                'meta_key' => '_menu_item_xfn' ,
+                'meta_value' => ''
+            ),
+            array(
+                'post_id' => $postID ,
+                'meta_key' => '_menu_item_url' ,
+                'meta_value' => ''
+            )
+        );
+
+        $this->db->insert_batch('wp_postmeta',$insertData);
+
+        $insertData = array(
+            array(
+                'object_id' => $postID,
+                'term_taxonomy_id' => 2,
+                'term_order' => 0
+            )
+        );
+
+        $this->db->insert('wp_term_relationships',$insertData);
+
+        ////////////////////////////////////////////////////////
 
         $oldmask = umask(0);
         $photoUrl = "/var/www/html/apartmentclub/wp-content/themes/accesspress-ray/images/demo/";
@@ -607,10 +733,14 @@ public function search(){
 
 public function wordP(){
 
+
+    /*
     $date = date('Y-m-d H:i:s');
     echo $date;
     $menuItemClasses="a:1:{i:0;s:0:\"\";}";
     echo "<br>".$menuItemClasses;
+    $objectId = 0; //this will change to what the value will be in the post table
+    */
     /*
     $this->db->select_max('post_id');
     $query = $this->db->get('wp_postmeta');
@@ -628,7 +758,12 @@ public function wordP(){
           'post_id' => $count,
           'meta_key' => '_menu_item_menu_item_parent' ,
           'meta_value' => '45'
-       )
+      ),
+      array(
+         'post_id' => $count,
+         'meta_key' => '_menu_itemn_object_id'
+         'meta_value' => ''
+      )
     );
 
     $this->db->insert_batch('wp_postmeta',$data);
@@ -637,7 +772,7 @@ public function wordP(){
     else
         echo "Alas";
 
-        */
+    */
 
 }
 
