@@ -54,6 +54,7 @@ header("Pragma: no-cache");
                     <label for="upload_url" style="margin-top:0.4em">Photo Upload Folder Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="upload_url" name="upload_url" value="<?php echo set_value('upload_url')?>" placeholder="Folder name" required>
                 </div>
+            </fieldset>
             </div>
 
 
