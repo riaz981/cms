@@ -49,7 +49,7 @@ header("Pragma: no-cache");
                     <input type="text" class="form-control" id="address" name="address" value="<?php echo set_value('address')?>" placeholder="Enter address" required>
 
                     <label for="url" style="margin-top:0.4em">Url: <span class="spanColor">*</span></label>
-                    <input type="text" class="form-control" id="url" name="url" value="<?php echo set_value('url')?>" placeholder="Enter Url: http://example.com" required>
+                    <input type="text" class="form-control" id="url" name="url" value="<?php echo set_value('url')?>" placeholder="Enter Url: http://example.com">
 
                     <label for="upload_url" style="margin-top:0.4em">Photo Upload Folder Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="upload_url" name="upload_url" value="<?php echo set_value('upload_url')?>" placeholder="Folder name" required>
@@ -183,7 +183,7 @@ header("Pragma: no-cache");
                     <input name="userfile[]" id="userfile" type="file" multiple="" required/>
             </fieldset>
         </div>
-    
+
         <div class="form-group">
             <fieldset>
                 <legend class="headings">Map: </legend>
