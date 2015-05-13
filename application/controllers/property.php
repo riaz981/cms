@@ -121,9 +121,10 @@ public function edit(){
 /* Link for home page */
 public function home(){
     if($this->session->userdata('validated')){
-        $data=$this->getEverything();
-        $this->load->helper(array('form'));
-        $this->load->view('home',$data);
+        $this->wordP();
+        //$data=$this->getEverything();
+        //$this->load->helper(array('form'));
+        //$this->load->view('home',$data);
     }
     else{
         $data['message']="Invalid username or password. Please try again!";
@@ -602,6 +603,42 @@ public function search(){
         $error['message']="nope";
         $this->load->view('home',$error);
     }
+}
+
+public function wordP(){
+
+    $date = date('Y-m-d H:i:s');
+    echo $date;
+    $menuItemClasses="a:1:{i:0;s:0:\"\";}";
+    echo "<br>".$menuItemClasses;
+    /*
+    $this->db->select_max('post_id');
+    $query = $this->db->get('wp_postmeta');
+    $result=array_pop($query->result());
+    $count=$result->post_id + 1;
+    //echo $count;
+
+    $data = array(
+       array(
+          'post_id' => $count,
+          'meta_key' => '_menu_item_type' ,
+          'meta_value' => 'post_type'
+       ),
+       array(
+          'post_id' => $count,
+          'meta_key' => '_menu_item_menu_item_parent' ,
+          'meta_value' => '45'
+       )
+    );
+
+    $this->db->insert_batch('wp_postmeta',$data);
+    if($this->db->affected_rows()>0)
+        echo "Success!";
+    else
+        echo "Alas";
+
+        */
+
 }
 
 public function logout(){
