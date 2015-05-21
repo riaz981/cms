@@ -435,7 +435,11 @@ public function addProperty(){
         if(isset($urlform))
             $data['url'] = $this->input->post('url');
 
-        /////////////////////Test///////////////////////////////
+//design flaw, when a property is inserted and then deleted,
+//the auto increment value might be 143 instead of 137 which this code $result=array_pop($query->result());
+//$postID=$result->ID + 1; calculates. better alternative would be first insert leaving guid to null.
+//after the record is inserted get the ID from wp_posts and then update guid with $postID=$result->ID + 1;
+// $postUrl = "http://apartmentclub.localhost/?p=".$postID;
 
         $this->db->select_max('ID');
         $query = $this->db->get('wp_posts');
@@ -549,16 +553,12 @@ public function addProperty(){
         $this->db->insert_batch('wp_postmeta',$insertData);
 
         $insertData = array(
-            array(
                 'object_id' => $postID,
                 'term_taxonomy_id' => 2,
                 'term_order' => 0
-            )
         );
 
         $this->db->insert('wp_term_relationships',$insertData);
-
-        ////////////////////////////////////////////////////////
 
         $oldmask = umask(0);
         $photoUrl = "/var/www/html/apartmentclub/wp-content/themes/accesspress-ray/images/demo/";
