@@ -448,6 +448,7 @@ public function addProperty(){
         $date = date('Y-m-d H:i:s');
         $postUrl = "http://apartmentclub.localhost/?p=".$postID;
         $insertData = array(
+            'ID' => $postID,
             'post_author' => 1,
             'post_date' => $date,
             'post_content' => "",
@@ -487,6 +488,7 @@ public function addProperty(){
         $date = date('Y-m-d H:i:s');
         $postUrl = "http://apartmentclub.localhost/?p=".$postID;
         $insertData = array(
+            'ID' => $postID,
             'post_author' => 1,
             'post_date' => $date,
             'post_content' => "",
