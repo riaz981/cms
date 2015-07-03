@@ -436,11 +436,10 @@ public function addProperty(){
         if(isset($urlform))
             $data['url'] = $this->input->post('url');
 
-//design flaw, when a property is inserted and then deleted,
-//the auto increment value might be 143 instead of 137 which this code $result=array_pop($query->result());
-//$postID=$result->ID + 1; calculates. better alternative would be first insert leaving guid to null.
-//after the record is inserted get the ID from wp_posts and then update guid with $postID=$result->ID + 1;
-// $postUrl = "http://apartmentclub.localhost/?p=".$postID;
+    // Have modified the code so that it stores the data after incrementing
+    // the maximum uid by 1. Also in wp_posts it increments the uid further and
+    // stores that as reference in the navbar. It detaches itself from
+    // autoincrement.
 
         $this->db->select_max('ID');
         $query = $this->db->get('wp_posts');
