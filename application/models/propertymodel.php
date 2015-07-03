@@ -177,15 +177,21 @@ function getIdByName($name){
 }
 
 function deleteRecord($id){
+    //Gets postID from the wp_property table.
     $this->db->select('postID');
     $this->db->where('id',$id);
     $query = $this->db->get('wp_property');
     $postResult = $query->result();
     $post = array_pop($postResult);
 
+    //Starts to delete properties from various tables one by one
     $this->db->delete('wp_property',array('postID'=>$post->postID));
     $this->db->delete('wp_posts',array('ID'=>$post->postID));
     $this->db->delete('wp_postmeta',array('post_id'=>$post->postID));
+
+    //Wordpress stores data in a certain manner for top navbar. increments
+    //properties uid and stores that as a reference to navbar. need to delete
+    //that as well so that it wont show an empty propety in navbar with no value.
     $post->postID = $post->postID + 1;
     $this->db->delete('wp_posts',array('ID'=>$post->postID));
     $this->db->delete('wp_postmeta',array('post_id'=>$post->postID));
