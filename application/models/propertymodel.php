@@ -177,7 +177,20 @@ function getIdByName($name){
 }
 
 function deleteRecord($id){
-    $this->db->delete('wp_property',array('id'=>$id));
+    $this->db->select('postID');
+    $this->db->where('id',$id);
+    $query = $this->db->get('wp_property');
+    $postResult = $query->result();
+    $post = array_pop($postResult);
+
+    $this->db->delete('wp_property',array('postID'=>$post->postID));
+    $this->db->delete('wp_posts',array('ID'=>$post->postID));
+    $this->db->delete('wp_postmeta',array('post_id'=>$post->postID));
+    $post->postID = $post->postID + 1;
+    $this->db->delete('wp_posts',array('ID'=>$post->postID));
+    $this->db->delete('wp_postmeta',array('post_id'=>$post->postID));
+    $this->db->delete('wp_term_relationships',array('object_id'=>$post->postID));
+
     if($this->db->affected_rows()>0){
         return true;
     }
