@@ -50,8 +50,8 @@ header("Pragma: no-cache");
                     <label for="address" class="labelInput">Address: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="address" name="address" value="<?php echo $address;?>" placeholder="Enter address" required>
 
-                    <label for="url" class="labelInput">Url: <span class="spanColor">*</span></label>
-                    <input type="text" class="form-control" id="url" name="url" value="<?php echo $url;?>" placeholder="Enter Url: http://example.com" required>
+                    <label for="url" class="labelInput">Url:</label>
+                    <input type="text" class="form-control" id="url" name="url" value="<?php echo $url;?>" placeholder="Enter Url: http://example.com" disabled>
 
                 </div>
             </div>
