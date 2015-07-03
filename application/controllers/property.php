@@ -390,6 +390,7 @@ public function deleteProperty(){
         $this->load->helper(array('form'));
         $this->load->view('home',$data);
     }
+
 }
 
 /*
