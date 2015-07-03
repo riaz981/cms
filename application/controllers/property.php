@@ -631,7 +631,7 @@ public function editProperty(){
     //setting the rules for form validation.
     $this->form_validation->set_rules('name','Name','required');
     $this->form_validation->set_rules('address','Address','required');
-    $this->form_validation->set_rules('url', 'Url', 'required');
+    //$this->form_validation->set_rules('url', 'Url', 'required');
     $this->form_validation->set_rules('typeProperty','Property Type','required');
     $this->form_validation->set_rules('guestNumber', 'Number of Guests','required');
     $this->form_validation->set_rules('bedroomNumber', 'Number of Bedrooms','required');
