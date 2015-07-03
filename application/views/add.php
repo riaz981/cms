@@ -7,7 +7,6 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 ?>
-
 <!-- collapse the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="#bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
@@ -47,9 +46,6 @@ header("Pragma: no-cache");
 
                     <label for="address" style="margin-top:0.4em;">Address: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="address" name="address" value="<?php echo set_value('address')?>" placeholder="Enter address" required>
-
-                    <label for="url" style="margin-top:0.4em">Url: <span class="spanColor">*</span></label>
-                    <input type="text" class="form-control" id="url" name="url" value="<?php echo set_value('url')?>" placeholder="Enter Url: http://example.com">
 
                     <label for="upload_url" style="margin-top:0.4em">Photo Upload Folder Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="upload_url" name="upload_url" value="<?php echo set_value('upload_url')?>" placeholder="Folder name" required>
