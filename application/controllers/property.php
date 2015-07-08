@@ -77,7 +77,17 @@ public function edit(){
 
         foreach ($query as $row){
             $data['name'] = $row->name;
-            $data['address'] = $row->address;
+            //$data['address'] = $row->address;
+            $address = json_decode($row->address);
+            if(isset($address->street))
+                $data['street'] = $address->street;
+            if(isset($address->suburb))
+                $data['suburb'] = $address->suburb;
+            if(isset($address->state))
+                $data['state'] = $address->state;
+            if(isset($address->country))
+                $data['country'] = $address->country;
+
             $data['url'] = $row->url;
 
             $icon = json_decode($row->icon);
@@ -431,7 +441,19 @@ public function addProperty(){
     //else call the model function to insert data
     else{
         $data['name'] = $this->input->post('name');
-        $data['address'] = $this->input->post('address');
+        //$data['address'] = $this->input->post('address');
+        /*
+        $map['latitude'] = $this->input->post('latitude');
+        $map['longitude'] = $this->input->post('longitude');
+
+        $data['map'] = json_encode($map);
+        */
+        $address['street'] = $this->input->post('street');
+        $address['suburb'] = $this->input->post('suburb');
+        $address['state'] = $this->input->post('state');
+        $address['country'] = $this->input->post('country');
+        $data['address'] = json_encode($address);
+
         $urlform=$this->input->post('url');
         if(isset($urlform))
             $data['url'] = $this->input->post('url');
@@ -632,7 +654,7 @@ public function editProperty(){
 
     //setting the rules for form validation.
     $this->form_validation->set_rules('name','Name','required');
-    $this->form_validation->set_rules('address','Address','required');
+    //$this->form_validation->set_rules('address','Address','required');
     //$this->form_validation->set_rules('url', 'Url', 'required');
     $this->form_validation->set_rules('typeProperty','Property Type','required');
     $this->form_validation->set_rules('guestNumber', 'Number of Guests','required');
@@ -660,8 +682,13 @@ public function editProperty(){
     else{
         $id = $this->input->post('id');
         $data['name'] = $this->input->post('name');
-        $data['address'] = $this->input->post('address');
-        $data['url'] = $this->input->post('url');
+        //$data['address'] = $this->input->post('address');
+        $address['street'] = $this->input->post('street');
+        $address['suburb'] = $this->input->post('suburb');
+        $address['state'] = $this->input->post('state');
+        $address['country'] = $this->input->post('country');
+        $data['address'] = json_encode($address);
+        //$data['url'] = $this->input->post('url');
 
         $icon['typeProperty'] = $this->input->post('typeProperty');
         $icon['guestNumber'] = $this->input->post('guestNumber');
