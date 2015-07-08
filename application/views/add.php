@@ -39,13 +39,26 @@ header("Pragma: no-cache");
 
             <div class="form-group">
             <fieldset>
-                <legend class="headings">Name, Address &amp Url:</legend>
+                <legend class="headings">Name, Address &amp Photo Upload Folder Name:</legend>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label for="name">Property Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" value="<?php echo set_value('name')?>" placeholder="Enter property name" required>
 
+                    <!--
                     <label for="address" style="margin-top:0.4em;">Address: <span class="spanColor">*</span></label>
-                    <input type="text" class="form-control" id="address" name="address" value="<?php echo set_value('address')?>" placeholder="Enter address" required>
+                    <input type="text" class="form-control" id="address" name="address" value="<?php //echo set_value('address')?>" placeholder="Enter address" required>
+                    !-->
+                    <label for="street" style="margin-top:0.4em;">Street:</label>
+                    <input type="text" class="form-control" id="street" name="street" value="<?php echo set_value('street')?>" placeholder="Enter street">
+
+                    <label for="suburb" style="margin-top:0.4em;">Suburb:</label>
+                    <input type="text" class="form-control" id="suburb" name="suburb" value="<?php echo set_value('suburb')?>" placeholder="Enter suburb">
+
+                    <label for="state" style="margin-top:0.4em;">State:</label>
+                    <input type="text" class="form-control" id="state" name="state" value="<?php echo set_value('state')?>" placeholder="Enter state">
+
+                    <label for="country" style="margin-top:0.4em;">Country:</label>
+                    <input type="text" class="form-control" id="country" name="country" value="<?php echo set_value('country')?>" placeholder="Enter country eg. United States">
 
                     <label for="upload_url" style="margin-top:0.4em">Photo Upload Folder Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="upload_url" name="upload_url" value="<?php echo set_value('upload_url')?>" placeholder="Folder name" required>
