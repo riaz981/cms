@@ -114,8 +114,10 @@ header("Pragma: no-cache");
                 <tbody>
                     <?php
                     if(isset($property)){
-                        foreach($property as $row){ ?>
-<tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php echo $row['address'] ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td>
+                        foreach($property as $row){
+                            $address = json_decode($row['address']);
+                            ?>
+<tr><td><?php echo $row['id'];?></td><td><?php echo $row['name']?></td><td><?php if(isset($address->street)){echo $address->street." ";}if(isset($address->suburb)){echo $address->suburb." ";}if(isset($address->state)){echo $address->state." ";}if(isset($address->country)){echo $address->country;} ?></td><td><a href="<?php echo $row['url']?>"><?php echo $row['url']?></a></td>
     <td>
         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
         <?php echo form_open('property/edit'); ?>
