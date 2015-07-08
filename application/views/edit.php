@@ -47,11 +47,22 @@ header("Pragma: no-cache");
                     <label for="name">Property Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>" placeholder="Enter property name" required>
 
+                    <!--
                     <label for="address" class="labelInput">Address: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="address" name="address" value="<?php echo $address;?>" placeholder="Enter address" required>
+                    !-->
 
-                    <label for="url" class="labelInput">Url:</label>
-                    <input type="text" class="form-control" id="url" name="url" value="<?php echo $url;?>" placeholder="Enter Url: http://example.com" disabled>
+                    <label for="street" style="margin-top:0.4em;">Street:</label>
+                    <input type="text" class="form-control" id="street" name="street" value="<?php if(isset($street)){ echo $street; } ?>" placeholder="Enter street">
+
+                    <label for="suburb" style="margin-top:0.4em;">Suburb:</label>
+                    <input type="text" class="form-control" id="suburb" name="suburb" value="<?php if(isset($suburb)){  echo $suburb; }?>" placeholder="Enter suburb">
+
+                    <label for="state" style="margin-top:0.4em;">State:</label>
+                    <input type="text" class="form-control" id="state" name="state" value="<?php if(isset($state)){ echo $state; }?>" placeholder="Enter state">
+
+                    <label for="country" style="margin-top:0.4em;">Country:</label>
+                    <input type="text" class="form-control" id="country" name="country" value="<?php if(isset($country)){ echo $country; }?>" placeholder="Enter country eg. United States">
 
                 </div>
             </div>
@@ -183,11 +194,15 @@ header("Pragma: no-cache");
             <div class="form-group">
                 <fieldset>
                     <legend class="headings">Map: </legend>
-
+                    <?php $address = $street.",".$suburb.",".$state.",".$country;?>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput" style=" margin-top:-0.5em;margin-bottom:0.3em; margin-left:-1em;">
+                        <label for="address">Address:</label>
+                        <input type="text" class="form-control" id="address" name="address" value="<?php echo $address;?>" style="float:left;" placeholder="Address" disabled>
+                    </div>
                     <script src="http://maps.googleapis.com/maps/api/js"></script>
-
-                    <script>
-
+                    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                    <script type="text/javascript">
+                        /*
                         function initialize() {
 
                           var latitude = undefined;
@@ -208,12 +223,38 @@ header("Pragma: no-cache");
                             });
                         }
                         google.maps.event.addDomListener(window, 'load', initialize);
+                        */
 
+                        function initialize() {
+
+                        var geocoder = new google.maps.Geocoder();
+                        var address = document.getElementById("address").value;
+
+                        geocoder.geocode( { 'address': address}, function(results, status) {
+
+                          if (status == google.maps.GeocoderStatus.OK) {
+                            var latitude = results[0].geometry.location.lat();
+                            var longitude = results[0].geometry.location.lng();
+                            var mapProp = {
+                              center:new google.maps.LatLng(latitude,longitude),
+                              zoom:15,
+                              mapTypeId:google.maps.MapTypeId.ROADMAP
+                            };
+                            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                            var marker = new google.maps.Marker({
+                                  position: new google.maps.LatLng(latitude,longitude),
+                                  map: map
+                              });
+                          }
+                        });
+
+                      }
+                        google.maps.event.addDomListener(window, 'load', initialize);
 
                     </script>
 
                     <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="googleMap"></div>
-
+                    <!--
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                         <label for="latitude">Latitude: <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="latitude" name="latitude" value="<?php echo $latitude; ?>" placeholder="Latitude" required>
@@ -222,6 +263,7 @@ header("Pragma: no-cache");
                         <label for="longitude">Longitude: <span class="spanColor">*</span></label>
                         <input type="text" class="form-control" id="longitude" name="longitude" value="<?php echo $longitude; ?>" placeholder="Longitude" required>
                     </div>
+                    !-->
                 </fieldset>
             </div>
 
@@ -234,7 +276,7 @@ header("Pragma: no-cache");
             </div>
         </div>
       </form>
-  </div>
+</div>
 </div>
 <?php
 $this->load->view('footer');
