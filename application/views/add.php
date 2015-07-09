@@ -71,24 +71,24 @@ header("Pragma: no-cache");
                 <fieldset>
                     <legend class="headings">Icon informations:</legend>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="typeProperty">Type: <span class="spanColor">*</span></label>
-                        <input type="text" class="form-control" id="typeProperty" name="typeProperty" value="<?php echo set_value('typeProperty')?>" placeholder="Whole house/Just rooms" required>
+                        <label for="typeProperty">Type: </label>
+                        <input type="text" class="form-control" id="typeProperty" name="typeProperty" value="<?php echo set_value('typeProperty')?>" placeholder="Whole house/Just rooms">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="guestNumber">Number of Guests: <span class="spanColor">*</span></label>
-                        <input type="number" class="form-control" id="guestNumber" name="guestNumber" placeholder="Number of Guests" value="<?php echo set_value('guestNumber')?>" required>
+                        <label for="guestNumber">Number of Guests: </label>
+                        <input type="number" class="form-control" id="guestNumber" name="guestNumber" placeholder="Number of Guests" value="0">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
                         <label for="bedroomNumber">Number of Bedrooms: <span class="spanColor">*</span></label>
-                        <input type="number" class="form-control" id="bedroomNumber" name="bedroomNumber" placeholder="Number of Bedrooms" value="<?php echo set_value('bedroomNumber')?>" required>
+                        <input type="number" class="form-control" id="bedroomNumber" name="bedroomNumber" placeholder="Number of Bedrooms" value="0">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="bedsNumber">Number of Beds: <span class="spanColor">*</span></label>
-                        <input type="number" class="form-control" id="bedsNumber" name="bedsNumber" placeholder="Number of Beds" value="<?php echo set_value('bedsNumber')?>" required>
+                        <label for="bedsNumber">Number of Beds:</label>
+                        <input type="number" class="form-control" id="bedsNumber" name="bedsNumber" placeholder="Number of Beds" value="0">
                     </div>
                     <div class="col-lg-12 col-lg-12 col-lg-12 col-xs-12" style="margin-top:0.4em;">
-                        <label for="minimumStay">Minimum Stay: (Nights) <span class="spanColor">*</span></label>
-                        <input type="number" class="form-control" id="minimumStay" name="minimumStay" placeholder="Minimum Stay" value="<?php echo set_value('minimumStay')?>" required>
+                        <label for="minimumStay">Minimum Stay: (Nights) </label>
+                        <input type="number" class="form-control" id="minimumStay" name="minimumStay" placeholder="Minimum Stay" value="0">
                     </div>
                 </fieldset>
             </div>
@@ -97,28 +97,28 @@ header("Pragma: no-cache");
                 <fieldset>
                 <legend class="headings">Rates:</legend>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="nightlyRate">Nightly Price: A$ <span class="spanColor">*</span></label>
-                        <input type="text" class="form-control" id="nightlyRate" name="nightlyRate" value="<?php echo set_value('nightlyRate')?>" placeholder="Nightly Price" required>
+                        <label for="nightlyRate">Nightly Price: A$</label>
+                        <input type="text" class="form-control" id="nightlyRate" name="nightlyRate" value="<?php echo set_value('nightlyRate')?>" placeholder="Nightly Price">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="weeklyRate">Weekly Price: A$ <span class="spanColor">*</span></label>
-                        <input type="text" class="form-control" id="weeklyRate" name="weeklyRate" value="<?php echo set_value('weeklyRate')?>" placeholder="Weekly Price" required>
+                        <label for="weeklyRate">Weekly Price: A$ </label>
+                        <input type="text" class="form-control" id="weeklyRate" name="weeklyRate" value="<?php echo set_value('weeklyRate')?>" placeholder="Weekly Price">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="monthlyRate">Monthly Price: A$ <span class="spanColor">*</span></label>
-                        <input type="text" class="form-control" id="monthlyRate" name="monthlyRate" value="<?php echo set_value('monthlyRate')?>" placeholder="Monthly Price" required>
+                        <label for="monthlyRate">Monthly Price: A$ </label>
+                        <input type="text" class="form-control" id="monthlyRate" name="monthlyRate" value="<?php echo set_value('monthlyRate')?>" placeholder="Monthly Price">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="cleaningRate">Cleaning Fee: A$ <span class="spanColor">*</span></label>
-                        <input type="text" class="form-control" id="cleaningRate" name="cleaningRate" value="<?php echo set_value('cleaningRate')?>" placeholder="Cleaning Fee" required>
+                        <label for="cleaningRate">Cleaning Fee: A$ </label>
+                        <input type="text" class="form-control" id="cleaningRate" name="cleaningRate" value="<?php echo set_value('cleaningRate')?>" placeholder="Cleaning Fee">
                     </div>
                 </fieldset>
             </div>
 
             <div class="form-group">
-                <label for="overview"><h4 class="headings" style="font-size:20px;">Overview: <span class="spanColor">*</span></h4></label>
+                <label for="overview"><h4 class="headings" style="font-size:20px;">Overview: </h4></label>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <textarea class="form-control" id="overview" name="overview" value="<?php echo set_value('overview')?>" placeholder="Property Overview" rows="5" required></textarea>
+                    <textarea class="form-control" id="overview" name="overview" value="<?php echo set_value('overview')?>" placeholder="Property Overview" rows="5"></textarea>
                 </div>
             </div>
 
@@ -126,44 +126,44 @@ header("Pragma: no-cache");
             <legend class="headings">Specifications:</legend>
                 <div class="form-group">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="dining">Dining: <span class="spanColor">*</span></label>
-                        <textarea class="form-control" id="dining" name="dining" value="<?php echo set_value('dining')?>" placeholder="Dining" rows="3" required></textarea>
+                        <label for="dining">Dining: </label>
+                        <textarea class="form-control" id="dining" name="dining" value="<?php echo set_value('dining')?>" placeholder="Dining" rows="3"></textarea>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <label for="bathroomDescription">Bathroom Description: <span class="spanColor">*</span></label>
-                        <textarea class="form-control" id="bathroomDescription" name="bathroomDescription" value="<?php echo set_value('bathroomDescription')?>" placeholder="Bathroom Description" rows="3" required></textarea>
+                        <label for="bathroomDescription">Bathroom Description: </label>
+                        <textarea class="form-control" id="bathroomDescription" name="bathroomDescription" value="<?php echo set_value('bathroomDescription')?>" placeholder="Bathroom Description" rows="3"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="bedroomDescription">Bedroom Description: <span class="spanColor">*</span></label>
-                        <textarea class="form-control" id="bedroomDescription" name="bedroomDescription" value="<?php echo set_value('bedroomDescription')?>" placeholder="Bedroom Description" rows="3" required></textarea>
+                        <label for="bedroomDescription">Bedroom Description: </label>
+                        <textarea class="form-control" id="bedroomDescription" name="bedroomDescription" value="<?php echo set_value('bedroomDescription')?>" placeholder="Bedroom Description" rows="3"></textarea>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="attractionDescription">Attractions Description: <span class="spanColor">*</span></label>
-                        <textarea class="form-control" id="attractionDescription" name="attractionDescription" value="<?php echo set_value('attractionDescription')?>" placeholder="Attractions Description" rows="3" required></textarea>
+                        <label for="attractionDescription">Attractions Description: </label>
+                        <textarea class="form-control" id="attractionDescription" name="attractionDescription" value="<?php echo set_value('attractionDescription')?>" placeholder="Attractions Description" rows="3"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="leisureDescription">Leisure Activity Description: <span class="spanColor">*</span></label>
-                        <textarea class="form-control" id="leisureDescription" name="leisureDescription" value="<?php echo set_value('leisureDescription')?>" placeholder="Leisure Activity Description" rows="3" required></textarea>
+                        <label for="leisureDescription">Leisure Activity Description: </label>
+                        <textarea class="form-control" id="leisureDescription" name="leisureDescription" value="<?php echo set_value('leisureDescription')?>" placeholder="Leisure Activity Description" rows="3"></textarea>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-top:0.4em;">
-                        <label for="businessDescription">Local Services &amp Businesses Description: <span class="spanColor">*</span></label>
-                        <textarea class="form-control" id="businessDescription" name="businessDescription" value="<?php echo set_value('businessDescription')?>" placeholder="Local Service and Businesses Description" rows="3" required></textarea>
+                        <label for="businessDescription">Local Services &amp Businesses Description: </label>
+                        <textarea class="form-control" id="businessDescription" name="businessDescription" value="<?php echo set_value('businessDescription')?>" placeholder="Local Service and Businesses Description" rows="3"></textarea>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:0.4em;">
-                        <label for="sportsDescription">Sports Adventures Activity Description: <span class="spanColor">*</span></label>
-                        <textarea class="form-control" id="sportsDescription" name="sportsDescription" value="<?php echo set_value('sportDescription')?>" placeholder="Sports Adventures Activity Description" rows="3" required></textarea>
+                        <label for="sportsDescription">Sports Adventures Activity Description: </label>
+                        <textarea class="form-control" id="sportsDescription" name="sportsDescription" value="<?php echo set_value('sportDescription')?>" placeholder="Sports Adventures Activity Description" rows="3"></textarea>
                     </div>
                 </div>
 
@@ -190,7 +190,7 @@ header("Pragma: no-cache");
                  </div>
                 <?php }}  ?>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:-0.6em;">
-                    <input name="userfile[]" id="userfile" type="file" multiple="" required/>
+                    <input name="userfile[]" id="userfile" type="file" multiple=""/>
             </fieldset>
         </div>
 
@@ -199,9 +199,13 @@ header("Pragma: no-cache");
                 <legend class="headings">Map: </legend>
 
                 <script src="http://maps.googleapis.com/maps/api/js"></script>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput" style=" margin-top:-0.5em;margin-bottom:0.3em; margin-left:-1em;">
+                    <label for="address">Address:</label>
+                    <input type="text" class="form-control" id="address" name="address" value="<?php if(isset($address)){echo $address;}?>" style="float:left;" placeholder="Address" disabled>
+                </div>
 
                 <script>
-
+                    /*
                     function initialize() {
 
                       var latitude = undefined;
@@ -222,21 +226,78 @@ header("Pragma: no-cache");
                         });
                     }
                     google.maps.event.addDomListener(window, 'load', initialize);
+                    */
 
+                    function getLatLong(){
+                        var geocoder = new google.maps.Geocoder();
+                        var street = document.getElementById("street").value;
+                        var suburb = document.getElementById("suburb").value;
+                        var state = document.getElementById("state").value;
+                        var country = document.getElementById("country").value;
+                        var address = street+","+suburb+","+state+","+country;
+                        document.getElementById("address").value = address;
+                        geocoder.geocode( { 'address': address}, function(results, status) {
+
+                          if (status == google.maps.GeocoderStatus.OK) {
+                            var latitude = results[0].geometry.location.lat();
+                            var longitude = results[0].geometry.location.lng();
+                            document.getElementById("latitude").value = latitude;
+                            document.getElementById("longitude").value = longitude;
+                            var mapProp = {
+                              center:new google.maps.LatLng(latitude,longitude),
+                              zoom:15,
+                              mapTypeId:google.maps.MapTypeId.ROADMAP
+                            };
+                            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                            var marker = new google.maps.Marker({
+                                  position: new google.maps.LatLng(latitude,longitude),
+                                  map: map
+                              });
+                          }
+                        });
+                    }
+
+                    function initialize() {
+
+                    var geocoder = new google.maps.Geocoder();
+                    var address = document.getElementById("address").value;
+
+                    geocoder.geocode( { 'address': address}, function(results, status) {
+
+                      if (status == google.maps.GeocoderStatus.OK) {
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+                        var mapProp = {
+                          center:new google.maps.LatLng(latitude,longitude),
+                          zoom:15,
+                          mapTypeId:google.maps.MapTypeId.ROADMAP
+                        };
+                        var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                        var marker = new google.maps.Marker({
+                              position: new google.maps.LatLng(latitude,longitude),
+                              map: map
+                          });
+                      }
+                    });
+
+                  }
+                    google.maps.event.addDomListener(window, 'load', initialize);
 
                 </script>
 
                 <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6" id="googleMap"></div>
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
-                    <label for="latitude">Latitude: <span class="spanColor">*</span></label>
-                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Eg. -33.790706" required>
+                    <label for="latitude">Latitude: </label>
+                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Eg. -33.790706" disabled>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
-                    <label for="longitude">Longitude: <span class="spanColor">*</span></label>
-                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Eg. 151.085582" required>
+                    <label for="longitude">Longitude: </label>
+                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Eg. 151.085582" disabled>
                 </div>
+
             </fieldset>
+            <div style="text-align:center;"><input type="button" value="Obtain Longitude and Latitude if you have entered address" onclick="getLatLong()"><span class="spanColor">*</span><br></div>
         </div>
 
         <div class="footerForm">
