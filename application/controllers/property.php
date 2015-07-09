@@ -414,8 +414,9 @@ public function addProperty(){
 
     //setting the rules for form validation.
     $this->form_validation->set_rules('name','Name','required');
-    $this->form_validation->set_rules('address','Address','required');
+    //$this->form_validation->set_rules('address','Address','required');
     //$this->form_validation->set_rules('url', 'Url', 'required');
+    /*
     $this->form_validation->set_rules('typeProperty','Property Type','required');
     $this->form_validation->set_rules('guestNumber', 'Number of Guests','required');
     $this->form_validation->set_rules('bedroomNumber', 'Number of Bedrooms','required');
@@ -431,6 +432,7 @@ public function addProperty(){
     $this->form_validation->set_rules('leisureDescription','Leisure Description','required');
     $this->form_validation->set_rules('businessDescription','Business Description', 'required');
     $this->form_validation->set_rules('sportsDescription','Sports Description','required');
+    */
     $this->form_validation->set_rules('upload_url','Photo Upload Url', 'required');
 
     //if there is any validation failure redirect
@@ -442,12 +444,6 @@ public function addProperty(){
     else{
         $data['name'] = $this->input->post('name');
         //$data['address'] = $this->input->post('address');
-        /*
-        $map['latitude'] = $this->input->post('latitude');
-        $map['longitude'] = $this->input->post('longitude');
-
-        $data['map'] = json_encode($map);
-        */
         $address['street'] = $this->input->post('street');
         $address['suburb'] = $this->input->post('suburb');
         $address['state'] = $this->input->post('state');
@@ -656,21 +652,21 @@ public function editProperty(){
     $this->form_validation->set_rules('name','Name','required');
     //$this->form_validation->set_rules('address','Address','required');
     //$this->form_validation->set_rules('url', 'Url', 'required');
-    $this->form_validation->set_rules('typeProperty','Property Type','required');
-    $this->form_validation->set_rules('guestNumber', 'Number of Guests','required');
-    $this->form_validation->set_rules('bedroomNumber', 'Number of Bedrooms','required');
-    $this->form_validation->set_rules('bedsNumber','Number of Beds','required');
-    $this->form_validation->set_rules('minimumStay','Minimum Stay','required');
-    $this->form_validation->set_rules('nightlyRate','Nightly Rate','required');
-    $this->form_validation->set_rules('weeklyRate','Weekly Rate','required');
-    $this->form_validation->set_rules('monthlyRate','Monthly Rate','required');
-    $this->form_validation->set_rules('cleaningRate','Cleaning Rate','required');
-    $this->form_validation->set_rules('bathroomDescription', 'Bathroom Description','required');
-    $this->form_validation->set_rules('bedroomDescription','Bedroom Description','required');
-    $this->form_validation->set_rules('attractionDescription','Description of Attractions','required');
-    $this->form_validation->set_rules('leisureDescription','Leisure Description','required');
-    $this->form_validation->set_rules('businessDescription','Business Description', 'required');
-    $this->form_validation->set_rules('sportsDescription','Sports Description','required');
+    //$this->form_validation->set_rules('typeProperty','Property Type','required');
+    //$this->form_validation->set_rules('guestNumber', 'Number of Guests','required');
+    //$this->form_validation->set_rules('bedroomNumber', 'Number of Bedrooms','required');
+    //$this->form_validation->set_rules('bedsNumber','Number of Beds','required');
+    //$this->form_validation->set_rules('minimumStay','Minimum Stay','required');
+    //$this->form_validation->set_rules('nightlyRate','Nightly Rate','required');
+    //$this->form_validation->set_rules('weeklyRate','Weekly Rate','required');
+    //$this->form_validation->set_rules('monthlyRate','Monthly Rate','required');
+    //$this->form_validation->set_rules('cleaningRate','Cleaning Rate','required');
+    //$this->form_validation->set_rules('bathroomDescription', 'Bathroom Description','required');
+    //$this->form_validation->set_rules('bedroomDescription','Bedroom Description','required');
+    //$this->form_validation->set_rules('attractionDescription','Description of Attractions','required');
+    //$this->form_validation->set_rules('leisureDescription','Leisure Description','required');
+    //$this->form_validation->set_rules('businessDescription','Business Description', 'required');
+    //$this->form_validation->set_rules('sportsDescription','Sports Description','required');
 
     //if there is any validation failure redirect
     //back to home.
