@@ -42,7 +42,7 @@ header("Pragma: no-cache");
 
             <div class="form-group">
             <fieldset>
-                <legend class="headings">Name, Address &amp Url:</legend>
+                <legend class="headings">Name &amp Address:</legend>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label for="name">Property Name: <span class="spanColor">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>" placeholder="Enter property name" required>
