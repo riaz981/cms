@@ -289,11 +289,11 @@ header("Pragma: no-cache");
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                     <label for="latitude">Latitude: </label>
-                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Eg. -33.790706" disabled>
+                    <input type="text" class="form-control" id="latitude" name="latitude" placeholder="Eg. -33.790706">
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 labelInput">
                     <label for="longitude">Longitude: </label>
-                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Eg. 151.085582" disabled>
+                    <input type="text" class="form-control" id="longitude" name="longitude" placeholder="Eg. 151.085582">
                 </div>
 
             </fieldset>
